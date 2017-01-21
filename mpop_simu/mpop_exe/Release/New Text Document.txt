@@ -1,0 +1,1 @@
+mpop -i ms.example -o new.example -N 100 -m 0.00001 -r 0.00001 -S -s 0.01 -h 0.5 -g 100

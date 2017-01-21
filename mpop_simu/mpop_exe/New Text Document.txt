@@ -1,0 +1,2 @@
+cblas.lib
+http://stats-lee.blogspot.com/2009/04/gsl-111-and-visual-studio-2008-or-2005.html

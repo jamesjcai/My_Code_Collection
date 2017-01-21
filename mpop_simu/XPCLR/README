@@ -1,0 +1,122 @@
+===============================================================================
+ XP-CLR version 1.0 10-30-2009 (linux)
+
+Hua Chen
+hchen@genetics.med.harvard.edu
+
+
+The XP-CLR package implements a composite likelihood method for detecting 
+selective sweeps via the differentiation of two populations. 
+
+
+===============================================================================
+Executables and scource code:
+------------------------------------------------------------------------------
+All C executables are in the bin/ directory.
+
+We have placed source code for all C executables in the src/ directory, 
+for users who wish to modify and recompile our programs.  For example, 
+to recompile the eigenstrat program, type
+"cd src"
+"make"      
+"make install"
+
+
+===============================================================================
+Command line:
+------------------------------------------------------------------------------
+XPCLR -xpclr genofile1 genofile2 mapfile outputFile -w1 snpWin gridSize chrN 
+       -p corrLevel
+-xpclr:		specify the input file format.[XpCLR accepts several other 
+                 input formats, but currently they haven't been checked 
+                 carefully yet.]
+genofile1:	genotype input for object population
+genofile2:	genotype input for reference population
+mapfile:	snp information file (for SNPs from a single chromosome) 
+outputfile:	The format is illustrated in next section.
+-w1:		set it to "-w1"
+gWin:		the size of a window (in units of Morgan). If the window size is
+                 not too small, the performance of XPCLR doesn't depend on the 
+                 size. A reasonable choice is 0.005.
+snpWin:		maximum # of SNPs within a window. XPCLR score depends on the 
+                 number of SNPs. To make the XP-CLR scores comparable between
+                 regions, it is necessary to control the maximum number of SNPs
+                 within a single window. The choice of snp # depends on the 
+                 SNP density of your data.
+gridSize:	the spacing between two grid points. It is in unit of bp.
+chrN:		the chromosome number.
+-p: "-p1": 	specify this if the genotype data is already phased.
+    "-p0": 	specify this if the genotype data is unphased.
+		The phase information of the genotype is used only if 
+                 corrLevel is set to be >0. When corrLevel >0, the XP-CLR score 
+                 is estimated using a weighted scheme. The weights come from
+                 the pairwise correlation between SNPs in the reference pop.
+                 If "p1", the phased data will be used to estimate pairwise 
+                 correlation coefficient directly; if "p0", pairwise correlation
+                 coefficients are estimated with an EM algorithm.  
+corrLevel:	the range of its value is on [0 1]. If it is on (0 1], this 
+                 corrLevel value is used as a criterion in the weighted 
+                 composite likelihood ratio test. If two SNPs are highly 
+                 correlated (r2 > corrLevel), their contribution to XPCLR 
+                 is down-weighted. 
+                 If corrLevel is set to be 0, XPCLR is estimated un-weightedly.
+
+One example of command line:
+XPCLR -xpclr CEU.9 YRI.9 snp.9 xpclr.9 -w1 0.005 200 2000 1 -p0 0.95
+
+
+XPCLR -xpclr CEU.9 YRI.9 9.xpclr.b36 xpclr.9 -w1 0.005 200 2000 1 -p0 0.95
+
+
+
+which means, a scan for selection on the genotype data from CEU.9 with YRI.9 as 
+a reference, the output file is named with appendix "xpclr.9". A set of grid 
+points as the putative selected allele positions are placed along the chromosome
+with a spacing of 2kb, the sliding window size is 0.5cM around the gird points. 
+If the number of SNPs within a window is beyond 200, some SNPs will be randomly
+dropped to control for the SNP number. A weighted CLR scheme is adopted in
+estimating XPCLR--the pairwise correlation coefficients (r2) of SNPs from the 
+reference population are used to give weights. When r2 >0.95, CLR scores for 
+these two SNPs are down-weighted. The genotype data of input is unphased, thus 
+r2 coefficients are estimated via a EM algorithm. 
+  
+===============================================================================
+Input/output format:
+------------------------------------------------------------------------------
+.geno file:
+each row contains the genotype of a single SNP
+for example:
+
+1 0 1 1 9 9
+1 1 1 0 0 0
+
+which contains two SNPs from 3 individuals. The first two columns are the two 
+alleles of individual #1. 1 and 0 correspond to two allele types. 9 denotes 
+missing data. The data could be phased or unphased. If it is phased, then each
+column stands for alleles from the same haplotype. Otherwise, the two alleles
+of an individual are placed arbitrarily.
+
+NOTE: The format is different from eigenstrat .geno file!
+-------------------------------------------------------------------------------
+.snp file:
+each row contains information on a SNP:
+SNPName chr# GeneticDistance(Morgan) PhysicalDistance(bp) RefAllele TheOtherAllele
+for example:
+rs465423 1 0.042681 4268076 T C
+
+-------------------------------------------------------------------------------
+output file:
+chr# grid# #ofSNPs_in_window physical_pos genetic_pos XPCLR_score max_s
+
+
+The output file can be used to make plots with other softwares, eg, R, Matlab.
+
+To make a plot of XP-CLR along the chromosome using matlab:
+-------------------------------------------------------------------------------
+xpclrScore=load('fileNameofOutput');
+plot(xpclrScore(:,4),xpclrScore(:,6),'.');
+
+================================================================================
+================================================================================  
+
+

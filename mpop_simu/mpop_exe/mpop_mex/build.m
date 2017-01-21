@@ -1,0 +1,1 @@
+mex mpop_mex.cpp haplotype.cpp population.cpp C:/gsl-1.13-windows-binaries/gsl/lib/cblas_d.lib C:/gsl-1.13-windows-binaries/gsl/lib/gsl_d.lib -IC:/gsl-1.13-windows-binaries/gsl/include -IC:/boost_1_43_0/

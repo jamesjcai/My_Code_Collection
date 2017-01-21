@@ -1,0 +1,32 @@
+# "make xp-clr" to make XP-CLR program
+# "make install" to copy all programs to ../bin
+# "make clean" to clean up extra files in the directory
+
+
+HOMEL=$(PWD)
+TOP=../bin
+
+CC=g++
+CFLAGS=-c 
+LIBDIR= $(HOMEL)/HUALIB/
+
+
+all:	XPCLR $(LIBDIR)p2sweep.o $(LIBDIR)hualib.o
+
+XPCLR:	xpclr.o $(LIBDIR)p2sweep.o $(LIBDIR)hualib.o xpclr.h
+	$(CC) $(LIBDIR)p2sweep.o $(LIBDIR)hualib.o xpclr.o -o XPCLR
+
+xpclr.o:	xpclr.cpp xpclr.h
+	$(CC) $(CFLAGS) xpclr.cpp
+
+p2sweep.o:	$(LIBDIR)p2sweep.cpp $(LIBDIR)p2sweep.h
+	$(CC) $(CFLAGS) $(LIBDIR)p2sweep.cpp 
+
+hualib.o:	$(LIBDIR)hualib.cpp $(LIBDIR)hualib.h
+	$(CC) $(CFLAGS) $(LIBDIR)hualib.cpp
+
+clean:
+	rm -f *.o
+
+install:	XPCLR
+	cp XPCLR $(TOP)
