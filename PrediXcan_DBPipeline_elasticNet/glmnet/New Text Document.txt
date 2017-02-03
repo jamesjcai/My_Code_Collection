@@ -1,0 +1,16 @@
+https://groups.google.com/forum/#!topic/comp.soft-sys.matlab/SZ23lmsGa6E
+
+
+A simple thing I cannot catch even after reading all the related research works "Regularization paths  for Generalized ... descent".
+I have
+x=randn(100,20);
+y=randn(100,1);
+fit=glmnet(x,y);
+
+Suppose 70 models are worked upon ie. 70 lambdas are evaluated. Then any lamda having value less than 70 implies OLS estimate. But if I try to reconstruct y as
+
+y_new = a0( 70) + x * fit.beta( : , 70)
+
+y_new is not at all near to the original y . Why is it so ?  
+
+Also the literature mentions Beta0 (here a0 ) as mean of yi's . But then why are there 70 different values for a0. Shouldn't a0 be just one value since yi's is just the observation that never changes.

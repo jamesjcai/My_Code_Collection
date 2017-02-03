@@ -1,0 +1,1 @@
+gene	rsid	ref	alt	beta	alpha

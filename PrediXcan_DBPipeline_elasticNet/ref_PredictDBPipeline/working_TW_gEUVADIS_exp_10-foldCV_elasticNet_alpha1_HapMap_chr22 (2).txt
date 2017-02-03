@@ -1,0 +1,1 @@
+gene	alpha	cvm	lambda.iteration	lambda.min	n.snps	R2	pval	genename

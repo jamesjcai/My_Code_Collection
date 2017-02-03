@@ -1,0 +1,2 @@
+chr	n_genes	seed_for_cv	alpha
+22	633	734	1

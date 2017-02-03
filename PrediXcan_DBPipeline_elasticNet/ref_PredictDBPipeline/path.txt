@@ -1,0 +1,7 @@
+https://github.com/hakyimlab/PrediXcan
+
+https://github.com/hakyimlab/PredictDBPipeline
+http://predictdb.hakyimlab.org
+https://github.com/hakyimlab/PredictDBPipeline/blob/master/scripts/GTEx_Tissue_Wide_CV_elasticNet.R
+
+PredictDBPipeline\PredictDBPipeline\data\intermediate\model_by_chr
