@@ -45,11 +45,3 @@ if any(ret~=0)
 else
     fprintf('Bad - unpredictable\n');
 end
-    
-
-
-
-
-
-
-
