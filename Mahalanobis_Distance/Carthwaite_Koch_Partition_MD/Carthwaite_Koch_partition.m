@@ -1,7 +1,8 @@
 function [d,f]=Carthwaite_Koch_partition(Y,X)
 
 m=mean(X,1);
-S=cov(X)^-1;
+SampVar=cov(X);
+S=SampVar^-1;
 C=Y-m;
 
 % Start that part of the Garthwaite-Koch partition that is the same for all items 
