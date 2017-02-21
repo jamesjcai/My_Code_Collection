@@ -1,0 +1,24 @@
+Array	Sample	Batch	Covariate
+Sample1_Group1_Batch1		1	group 1
+Sample2_Group1_Batch1	leave	1	group 1
+Sample3_Group1_Batch1	blank	1	group 1
+Sample4_Group1_Batch1	or 	1	group 1
+Sample5_Group3_Batch1	fill	1	group 3
+Sample6_Group3_Batch1		1	group 3
+Sample7_Group3_Batch1		1	group 3
+Sample8_Group3_Batch1		1	group 3
+Sample9_Group3_Batch1		1	group 3
+Sample10_Group2_Batch1		1	group 2
+Sample11_Group2_Batch1		1	group 2
+Sample12_Group2_Batch1		1	group 2
+Sample13_Group2_Batch1		1	group 2
+Sample14_Group4_Batch1		1	group 4
+Sample15_Group4_Batch1		1	group 4
+Sample16_Group1_Batch2		2	group 1
+Sample4_Group1_Batch2		2	group 1
+SampleA_Group2_Batch2		2	group 2
+Sample10_Group2_Batch2		2	group 2
+Sample5_Group3_Batch2		2	group 3
+SampleB_Group4_Batch2		2	group 4
+SampleCGroup4_Batch2		2	group 4
+SampleD_Group4_Batch2		2	group 4
