@@ -1,0 +1,128 @@
+function [nn,ns,ni,D]=hapmap_at_ensemblexon(geneid,transid,exonstart,exonend)
+
+nn=-1; ns=-1; ni=-1;
+%transid='ENST00000360131';
+%geneid='ENSG00000084693';
+%genename='AGBL5';
+
+[transidlist,transcord,D]=getcdscord(geneid);
+%[transid2,transcord2,D]=genename2cds(genename);
+
+if isempty(D)
+    return;
+end
+
+[ok,mxid]=ismember(transid,transidlist);
+if ~ok
+    return;
+end
+    cdspos=transcord{mxid};
+
+    chrid=D.chrid;
+    strand=D.strand;
+ 	mmFilename=sprintf('C:/biodata/hgenome/Homo_sapiens.NCBI36.40.dna.chromosome.%d.mm',chrid);
+	chrmm = memmapfile(mmFilename, 'format', 'uint8');
+
+    seq=[];
+    for (kk=1:size(cdspos,1)),
+          seq=[seq,chrmm.Data(cdspos(kk,1):cdspos(kk,2))'];
+    end
+    if (strand<0)
+        seq=revcomseq(seq);
+    end
+
+
+%startn=min(min(cdspos));
+%endn=max(max(cdspos));
+
+%startn=min(min(cdspos));
+%endn=max(max(cdspos));
+startn=exonstart;
+endn=exonend;
+
+    % get SNPs
+
+%popid='CEU';
+popid='YRI';
+
+%s.rs_id, s.allele, h.allelea, h.alleleb, h.freqa, h.freqb, s.ancnuc,
+sql='SELECT s.rs_id, s.strand, s.position, s.allele, h.allelea, h.alleleb, h.freqa, h.freqb, s.neinuc, s.ancnuc FROM snpdata.snp s inner join snpdata.hapmapii h';
+sql=strcat(sql, ' on s.rs_id=h.rs_id where s.allele not like ''%%-%%''');
+sql=strcat(sql,...
+sprintf(' and h.pop_id=''%s'' and s.chr_id=%d and s.position >=%d and s.position <=%d order by s.position;'...
+,popid,chrid,startn,endn));
+
+conn = database('snpdata', '', '');
+curs = exec(conn, sql);
+setdbprefs('DataReturnFormat','structure')
+curs = fetch(curs);
+D=curs.Data;
+close(curs);
+close(conn);
+  nn=0; ns=0; ni=0;
+
+if ~isstruct(D)
+
+    return;
+end
+
+  %  rs_id: {19x1 cell}
+  %   allele: {19x1 cell}
+  %   strand: [19x1 double]
+  %  allelea: {19x1 cell}
+  %  alleleb: {19x1 cell}
+  %    freqa: [19x1 double]
+  %    freqb: [19x1 double]
+  %   neinuc: {19x1 cell}
+  %   ancnuc: {19x1 cell}
+
+
+ns=0; nn=0; ni=0;
+
+idx=[]; conseq=[];
+
+  for k=1:length(D.position)
+      %k=15
+  %fprintf('%s\t%d\t%s/%s\t%d %d\n',...
+  %    D.rs_id{k},D.position(k),D.allelea{k},D.alleleb{k},D.strand(k),strand);
+  rspos=D.position(k);
+  ancnuc=nt2int(D.allelea{k});
+  mutnuc=nt2int(D.alleleb{k});
+
+  [typen]=mutationtype(seq,cdspos,strand,rspos,ancnuc,mutnuc);
+  ns=ns+(typen==1);
+  nn=nn+(typen==2);
+  ni=ni+(typen==0);
+        if typen>0
+          idx=[idx,k];
+          conseq=[conseq,typen];
+      end
+  end
+
+
+  if (nargout>3 && ~isempty(idx))
+	D.rs_id=D.rs_id(idx);
+	D.allele=D.allele(idx);
+	D.allelea=D.allelea(idx);
+	D.alleleb=D.alleleb(idx);
+	D.position=D.position(idx);
+	D.freqa=D.freqa(idx);
+	D.freqb=D.freqb(idx);
+	D.neinuc=D.neinuc(idx);
+	D.ancnuc=D.ancnuc(idx);
+	D.conseq=conseq;
+	D.chromosome=chrid;
+	D.daf=zeros(length(D.conseq),1);
+	for k=1:length(D.conseq)
+	    ancx=D.ancnuc{k}(2);
+	    if (ancx==D.allelea{k})
+		D.daf(k)=D.freqb(k);
+	    elseif(ancx==D.alleleb{k})
+		D.daf(k)=D.freqa(k);
+	    else
+		D.daf(k)=-1;
+	    end
+	end
+  else
+	D=[];
+  end
