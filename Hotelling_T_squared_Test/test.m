@@ -7,10 +7,18 @@
 
 %%
 [x,y]=swiss3;
-
 [pval,T2,F] = hotell2(x,y,2)
+[pval,T2,F] = hotell2_robust(x,y)
 
-% T2Hot2d([x;y])
+T1=readtable('MaleAthletes.txt');
+T2=readtable('FemaleAthletes.txt');
+X=table2array(T1);
+Y=table2array(T2);
+
+[pval,T2,F] = hotell2(X,Y,2)
+
+[f,c]=hotell2_partition(X,Y)
+
 %%
 function [x,y]=swiss3
 % http://sites.stat.psu.edu/~ajw13/stat505/fa06/data/swiss3.txt
