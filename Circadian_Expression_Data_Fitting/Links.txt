@@ -1,0 +1,7 @@
+Machine learning identifies a compact gene set for monitoring the circadian clock in human blood
+http://genomemedicine.biomedcentral.com/articles/10.1186/s13073-017-0406-4
+
+https://github.com/jakejh/zeitzeiger
+
+https://www.ncbi.nlm.nih.gov/pubmed/26819407
+ZeitZeiger: supervised learning for high-dimensional data from an oscillatory system.
