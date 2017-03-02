@@ -9,11 +9,11 @@ rd=nan(n,1);
 switch Methodid
     case 1
         % new function since v2016a. 2x faster than mcdcov
-	% requirs: size(X,2)<2*size(X,1)
+        % requirs: size(X,2)<2*size(X,1)
         [sig,mu] = robustcov(X,'OutlierFraction',1-Alpha);
     case 2
-	% requirs: size(X,2)<=50
-	rew=mcdcov(X,'plots',0,'alpha',Alpha);
+        % requirs: size(X,2)<=50
+        rew=mcdcov(X,'plots',0,'alpha',Alpha);
         mu=rew.center;
         sig=rew.cov;
 end
