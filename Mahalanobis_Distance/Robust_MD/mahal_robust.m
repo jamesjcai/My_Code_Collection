@@ -1,4 +1,5 @@
 function [rd]=mahal_robust(Y,X,Alpha,Methodid)
+%MAHAL_ROBUST Robust Mahalanobis distance squared.
 % X - Control data matrix (row: samples, column: variables)
 % Y - Case data matrix (row: samples, column: variables)
 if nargin<4, Methodid=1; end
@@ -12,7 +13,7 @@ switch Methodid
         % requirs: size(X,2)<2*size(X,1)
         [sig,mu] = robustcov(X,'OutlierFraction',1-Alpha);
     case 2
-        % requirs: size(X,2)<=50
+        % LIBRA toolbox requirs: size(X,2)<=50 
         rew=mcdcov(X,'plots',0,'alpha',Alpha);
         mu=rew.center;
         sig=rew.cov;
