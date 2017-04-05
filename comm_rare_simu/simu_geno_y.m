@@ -1,4 +1,4 @@
-system('ms 2000 1 -t 16.4 -G 6.93 -eG 0.2 0.0 -eN 0.3 0.5 >ms_output_example.txt');
+system('ms.exe 2000 1 -t 16.4 -G 6.93 -eG 0.2 0.0 -eN 0.3 0.5 >ms_output_example.txt');
 
 OUT=readmsoutput('ms_output_example.txt');
 gametes=(OUT.gametes{1});
@@ -29,7 +29,7 @@ i_common_run_gcta
 
 if status1==0 && status2==0
     i_common_detect_eqtl    
-    i_common_lasso
+    % i_common_lasso
 end
 
 
