@@ -24,7 +24,7 @@ end
         
         %hold on
         h2=boxplot(y,g,'colors','k');
-        set(h2(6,:),'color','k','linewidth',2.5);
+        set(h2(6,:),'color','k','linewidth',3);
         
         hold on
         % plot(g+1+randn(size(g))*0.025,d2,'o','color','k');

@@ -50,7 +50,7 @@ function [D]=i_dmatrix_md(Y)
         
         n=size(Y,1);
         D=zeros(n);
-        for i=1:n-1;
+        for i=1:n-1
             for j=i+1:n
             % MDc(i)=(c1(i,:)-mcd.center)*inv(mcd.cov)*(c1(i,:)-mcd.center)';
             D(i,j)=(Y(i,:)-Y(j,:))*inv(mcd.cov)*(Y(i,:)-Y(j,:))';
@@ -67,7 +67,7 @@ function [D]=i_dmatrix_md2(Y)
         
         n=size(Y,1);
         D=zeros(n);
-        for i=1:n-1;
+        for i=1:n-1
             for j=i+1:n
             MDi=(Y(i,:)-mcd.center)*inv(mcd.cov)*(Y(i,:)-mcd.center)';
             MDj=(Y(j,:)-mcd.center)*inv(mcd.cov)*(Y(j,:)-mcd.center)';
@@ -82,7 +82,7 @@ end
 function [D]=i_dmatrix_co(Y)
         n=size(Y,1);
         D=zeros(n);
-        for i=1:n-1;
+        for i=1:n-1
             for j=i+1:n            
             r=abs(corr(Y(i,:)',Y(j,:)'));
             D(i,j)=sqrt(2*(1-r));
@@ -95,7 +95,7 @@ end
 function [D]=i_dmatrix_eu(Y)
         n=size(Y,1);
         D=zeros(n);
-        for i=1:n-1;
+        for i=1:n-1
             for j=i+1:n 
                 D(i,j) = norm(Y(i,:) - Y(j,:));
                 % D(i,j) = sqrt((Y(,:)-Y(2,:))*(Y(1,:)-Y(2,:))');

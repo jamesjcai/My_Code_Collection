@@ -1,0 +1,2 @@
+SNP	gene	t-stat	p-value	FDR
+Snp_11	Gene_06	-3.024516	9.098345e-03	1.000000e+00

@@ -23,9 +23,14 @@ for k=1:p
 end
 snp_writelinkage(geno,mark,'aaa');
 
+status1=1; status2=1;
+
 i_common_run_gcta
 
 if status1==0 && status2==0
-    i_common_detect_eqtl
+    i_common_detect_eqtl    
+    i_common_lasso
 end
+
+
 

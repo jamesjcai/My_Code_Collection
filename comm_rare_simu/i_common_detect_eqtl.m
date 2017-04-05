@@ -11,12 +11,14 @@ pv=ones(size(g012,2),1);
 for k=1:size(g012,2)
     res=regstats(y,g012(:,k),'linear');
     pv(k)=res.fstat.pval;
+    %res2=fitlm(y,g012(:,k));
+    %res2.Coefficients.pValue(2)
 end
 
-[pvalue,idx]=min(pv);
+[pvalue,idx_best]=min(pv);
 
 fprintf('\n\n------------------------------\n');
-fprintf('Most sig SNP is: %s (P=%.2e)\n',mark.rsid{idx},pvalue);
+fprintf('Most sig SNP is: %s (P=%.2e)\n',mark.rsid{idx_best},pvalue);
 
 fid=fopen('causal.snplist','r');
 [D]=textscan(fid,'%s%f');

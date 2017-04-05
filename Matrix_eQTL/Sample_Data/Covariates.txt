@@ -1,0 +1,3 @@
+id	Sample_01	Sample_02	Sample_03	Sample_04	Sample_05	Sample_06	Sample_07	Sample_08	Sample_09	Sample_10	Sample_11	Sample_12	Sample_13	Sample_14	Sample_15	Sample_16
+gender	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1
+age	36	40	46	65	69	43	40	54	44	70	24	34	55	62	48	40
