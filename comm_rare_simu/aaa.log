@@ -6,21 +6,21 @@ Options in effect:
 
 Hostname: CAILAB2X384-
 Working directory: C:\Users\jcai\Documents\GitHub\My_Code\comm_rare_simu
-Start time: Wed Apr 05 15:56:48 2017
+Start time: Wed Apr 05 16:48:36 2017
 
-Random number seed: 1491425808
+Random number seed: 1491428916
 16310 MB RAM detected; reserving 8155 MB for main workspace.
 Scanning .ped file... done.
-Performing single-pass .bed write (101 variants, 1000 people).
+Performing single-pass .bed write (83 variants, 1000 people).
 --file: aaa-temporary.bed + aaa-temporary.bim + aaa-temporary.fam written.
-101 variants loaded from .bim file.
+83 variants loaded from .bim file.
 1000 people (1000 males, 0 females) loaded from .fam.
 1000 phenotype values loaded from .fam.
 Using 1 thread (no multithreaded calculations invoked).
 Before main variant filters, 1000 founders and 0 nonfounders present.
 Calculating allele frequencies... done.
-101 variants and 1000 people pass filters and QC.
+83 variants and 1000 people pass filters and QC.
 Among remaining phenotypes, 0 are cases and 1000 are controls.
 --make-bed to aaa.bed + aaa.bim + aaa.fam ... done.
 
-End time: Wed Apr 05 15:56:49 2017
+End time: Wed Apr 05 16:48:37 2017

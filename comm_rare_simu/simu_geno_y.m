@@ -29,7 +29,7 @@ i_common_run_gcta
 
 if status1==0 && status2==0
     i_common_detect_eqtl    
-    % i_common_lasso
+    i_common_lasso
 end
 
 
