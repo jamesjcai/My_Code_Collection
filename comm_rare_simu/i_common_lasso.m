@@ -8,9 +8,10 @@ evqtlplot(expr,geno(:,idx_best));
 
 %% 
 disp('Using GLMNET method...');
-addpath('../glmnet_matlab');
+% addpath('../glmnet_win64_Selmaan');
+% addpath('../glmnet_matlab');
 % addpath('../PrediXcan_DBPipeline_elasticNet/glmnet/glmnet_matlab/');
-% addpath('C:\Users\jcai\Desktop\glmnet\glmnet_matlab');
+addpath('C:\Users\jcai\Desktop\glmnet\glmnet_matlab');
 family='deviance';
 options=[];
 type='deviance';
