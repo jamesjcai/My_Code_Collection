@@ -1,15 +1,16 @@
-addpath('../mymatlabcentral/');
+
 
 expr=y;
 geno=g012;
-
+addpath('../mymatlabcentral/');
 figure;
 evqtlplot(expr,geno(:,idx_best));
 
 %% 
 disp('Using GLMNET method...');
-addpath('../PrediXcan_DBPipeline_elasticNet/glmnet/glmnet_matlab/');
-
+addpath('../glmnet_matlab');
+% addpath('../PrediXcan_DBPipeline_elasticNet/glmnet/glmnet_matlab/');
+% addpath('C:\Users\jcai\Desktop\glmnet\glmnet_matlab');
 family='deviance';
 options=[];
 type='deviance';

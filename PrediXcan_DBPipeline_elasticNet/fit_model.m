@@ -1,4 +1,4 @@
-addpath('glmnet\glmnet_matlab');
+addpath('../glmnet_matlab');
 
 %geno=csvread('exampledata_unpredictable/cisgenos.txt',1,1);
 %expr=csvread('exampledata_unpredictable/exppheno.txt',1,1);
