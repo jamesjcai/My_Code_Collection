@@ -15,14 +15,16 @@ for k=1:size(g012,2)
     %res2.Coefficients.pValue(2)
 end
 
-[pvalue,idx_best]=min(pv);
+[pvalue,idx_best]=sort(pv);
 
 fprintf('\n\n------------------------------\n');
-fprintf('Most sig SNP is: %s (P=%.2e)\n',mark.rsid{idx_best},pvalue);
+fprintf('Most sig SNP is: #%d %s (P=%.2e)\n',idx_best(1),mark.rsid{idx_best(1)},pvalue(1));
+fprintf('2nd most sig SNP is: #%d %s (P=%.2e)\n',idx_best(2),mark.rsid{idx_best(2)},pvalue(2));
 
 fid=fopen('causal.snplist','r');
 [D]=textscan(fid,'%s%f');
 fclose(fid);
-fprintf('  Causal SNP is: %s\n',D{1}{1});
+fprintf('  Causal SNP 1 (#%d) is: %s\n',idx,D{1}{1});
+fprintf('  Causal SNP 2 (#%d) is: %s\n',idx2,D{1}{2});
 fprintf('------------------------------\n');
 

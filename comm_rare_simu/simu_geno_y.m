@@ -1,6 +1,9 @@
-system('ms.exe 2000 1 -t 16.4 -G 6.93 -eG 0.2 0.0 -eN 0.3 0.5 >ms_output_example.txt');
+clc
+clear all
+close all
+system('ms.exe 2000 1 -t 16.4 -r 100.0 2501 -G 6.93 -eG 0.2 0.0 -eN 0.3 0.5 >ms_output.txt');
 
-OUT=readmsoutput('ms_output_example.txt');
+OUT=readmsoutput('ms_output.txt');
 gametes=(OUT.gametes{1});
 [n,p]=size(gametes);
 gametes=gametes(randperm(n),:);

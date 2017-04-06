@@ -4,14 +4,20 @@ expr=y;
 geno=g012;
 addpath('../mymatlabcentral/');
 figure;
-evqtlplot(expr,geno(:,idx_best));
+evqtlplot(expr,geno(:,idx_best(1)));
+xlabel(D{1}{1})
+
+figure;
+evqtlplot(expr,geno(:,idx_best(2)));
+xlabel(D{1}{2})
+
 
 %% 
 disp('Using GLMNET method...');
-% addpath('../glmnet_win64_Selmaan');
+addpath('../glmnet_win64_Selmaan');
 % addpath('../glmnet_matlab');
 % addpath('../PrediXcan_DBPipeline_elasticNet/glmnet/glmnet_matlab/');
-addpath('C:\Users\jcai\Desktop\glmnet\glmnet_matlab');
+% addpath('C:\Users\jcai\Desktop\glmnet\glmnet_matlab');
 family='deviance';
 options=[];
 type='deviance';
@@ -52,8 +58,10 @@ if any(ret~=0)
      figure;
      bar(ret);
      hold on
-     line([idx_best idx_best],ylim,'color','r')
+     line([idx_best(1) idx_best(1)],ylim,'color','r')
+     line([idx_best(2) idx_best(2)],ylim,'color','g')
      title('beta estimated using GLMNET method')
+     xlabel([D{1}{1},' ',D{1}{2}])     
 else
     fprintf('Bad - unpredictable\n');
 end
