@@ -26,14 +26,35 @@ for k=1:p
 end
 snp_writelinkage(geno,mark,'aaa');
 
-status1=1; status2=1;
+%geno2=snp_readlinkage('aaa.ped','Delimiter',' ','UseACGT',true,'Noise',false);
+%if sum(sum(double(geno)-double(geno2)))~=0, error('xxx'); end
+g012=snp_012geno(geno);
 
+% genotype simulation is done.
+
+
+
+
+
+status1=1; status2=1;
 i_common_run_gcta
 
 if status1==0 && status2==0
-    i_common_detect_eqtl    
+    i_common_detect_eqtl
     i_common_lasso
 end
+
+
+save skatinfile g012 expr expr_residual
+% saveR('skatinfile.r', 'g012', 'expr')
+[status3]=system('E:/R/R-3.3.1/bin/x64/Rscript.exe run_SKAT.r');
+if status3==0
+load('skatoutfile.mat','pskat1','pskat2')
+pskat1
+pskat2
+end
+
+
 
 
 
