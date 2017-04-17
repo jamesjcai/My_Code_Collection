@@ -46,7 +46,8 @@ expr_common=D{3};
 
  % B=randn(length(idx3),1).*(1000*maf(idx3).^2)';
  B = betapdf(maf(idx3),1,25)';
- 
+%B=0.6*abs(log10(maf(idx3)))';
+
  expr = expr_common;% + g012_rare*B;
  % expr = g012_rare*B;
  
