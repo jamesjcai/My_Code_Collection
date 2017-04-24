@@ -26,10 +26,10 @@ addpath('../glmnet_win64_Selmaan');
 % addpath('C:\Users\jcai\Desktop\glmnet\glmnet_matlab');
 family='deviance';
 options=[];
-type='deviance';
+typet='deviance';
 nfolds=10;
 foldid=[];
-parallel=false;
+useparallel=false;
 keep=true;
 
 idx_comm=find(maf>=0.05);
@@ -37,8 +37,8 @@ geno_comm=snp_pickmarker(geno,[],idx_comm);
 g012_comm=snp_012geno(geno_comm);
 
 
-cvfit = cvglmnet(g012_comm, expr,'gaussian', options, type, nfolds, foldid,...
-        parallel, keep);
+cvfit = cvglmnet(g012_comm, expr,'gaussian', options, typet, nfolds, foldid,...
+        useparallel, keep);
 
 [xl,yl,xs,ys,beta,pctvar,mse] = plsregress(g012_comm,expr,4);    
 beta=beta(2:end);
@@ -66,8 +66,10 @@ if any(ret~=0)
     %figure;
     subplot(2,2,4)
         g012_rare=g012(:,idx3);
-        [expr,i]=sort(expr);
-        predmat=predmat(i);
+
+%        [expr,i]=sort(expr);
+%        predmat=predmat(i);
+
 %         c = linspace(1,10,length(predmat));
 %         scatter(predmat,expr,25,c,'filled')
         hold on
