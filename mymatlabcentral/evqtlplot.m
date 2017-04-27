@@ -23,6 +23,7 @@ end
         %plot(1+g+0.1*(rand(size(g))-0.5),y,'o','color',c)
         
         %hold on
+        g=double(g);
         h2=boxplot(y,g,'colors','k');
         set(h2(6,:),'color','k','linewidth',3);
         
