@@ -1,0 +1,25 @@
+PLINK v1.90b3.38 64-bit (7 Jun 2016)
+Options in effect:
+  --bfile test
+  --out mypedfile
+  --recode
+  --tab
+
+Hostname: a361-y
+Working directory: /home/cailab/Desktop/gcta_1.26.0
+Start time: Wed May 10 17:05:18 2017
+
+Note: --tab flag deprecated.  Use '--recode tab ...'.
+Random number seed: 1494453918
+128927 MB RAM detected; reserving 64463 MB for main workspace.
+1000 variants loaded from .bim file.
+3925 people (1643 males, 2282 females) loaded from .fam.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 3925 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.98981.
+1000 variants and 3925 people pass filters and QC.
+Note: No phenotypes present.
+--recode to mypedfile.ped + mypedfile.map ... done.
+
+End time: Wed May 10 17:05:18 2017

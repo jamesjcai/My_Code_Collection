@@ -1,0 +1,38 @@
+Version: 1.07 (10/06/2016)
+- added Exit Code 16 for syntax errors,
+- Subject and FullName is not truncated to 64 characters and can be 255 characters long (some older MTA can truncate it to 78 characters),
+- updated OpenSSL library to the latest version 1.0.2h.
+
+
+Version: 1.06 (02/04/2016)
+- added quoted printable encoding of Subject and FullName fields,
+- added SMTP server address and port number details in verbose mode,
+- date and time can be added at the end of mail body when mail body is loaded from a file.
+
+
+Version: 1.05 (01/04/2016)
+- fixed issue with MIME header and empty email body when attachment is included.
+- semicolon can be used to separeate e-mail addresses in To:, Cc: and Bcc:
+
+
+Version: 1.04 (19/03/2016)
+- new parameter CC added to INI configuration file (Carbon Copy),
+- new commandline parameter -c added to commandline (Carbon Copy),
+- new parameter BCC added to INI configuration file (Blind Carbon Copy),
+- new commandline parameter -u added to commandline (Blind Carbon Copy),
+- minor code improvements.
+
+
+Version: 1.03 (17/03/2016)
+- fixed FullName parameter encoding coversion from Windows CP1250 to ISO-8859-2,
+- minor issues resolved.
+
+
+Version: 1.02 (16/03/2016)
+- new parameter VerboseMode added to INI configuration file,
+- new commandline parameter -i added to commandline (importance level),
+
+
+Version: 1.01  (15/03/2016)
+- new commandline parameter -r added to commandline (To:),
+- minor issues resolved.
