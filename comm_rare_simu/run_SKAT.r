@@ -1,5 +1,5 @@
-library(SKAT)
-library(R.matlab)
+suppressPackageStartupMessages(library(SKAT))
+suppressPackageStartupMessages(library(R.matlab))
 D<-readMat("skatinfile.mat");
 attach(D);
 # source('skatinfile.r')
