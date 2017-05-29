@@ -1,7 +1,7 @@
 
-load('\\165.91.29.187\disk4t\1000GenomeGenotype\phase_3\panel2504.mat', 'super_pop')
-load('\\165.91.29.187\disk4t\1000GenomeGenotype\phase_3\mat\geno_phase3_v5a_20130502_chr22.mat')
-load('\\165.91.29.187\disk4t\1000GenomeGenotype\phase_3\mat\marklite_phase3_v5a_20130502_chr22.mat')
+load('\\a361-1\disk4t\1000GenomeGenotype\phase_3\panel2504.mat', 'super_pop')
+load('\\a361-1\disk4t\1000GenomeGenotype\phase_3\mat\geno_phase3_v5a_20130502_chr22.mat')
+load('\\a361-1\disk4t\1000GenomeGenotype\phase_3\mat\marklite_phase3_v5a_20130502_chr22.mat')
 
 %%
 geno=geno(ismember(super_pop,'EUR'),:);

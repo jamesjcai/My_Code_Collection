@@ -1,8 +1,12 @@
+if ispc
+    addpath('../glmnet_win64_Selmaan');
+else
+    addpath('../glmnet_matlab/');
+end
 
 %% 
 %{
 disp('Using GLMNET method...common snps only');
-addpath('../glmnet_win64_Selmaan');
 % addpath('../glmnet_win64');
 % addpath('../glmnet_matlab');
 % addpath('../PrediXcan_DBPipeline_elasticNet/glmnet/glmnet_matlab/');
