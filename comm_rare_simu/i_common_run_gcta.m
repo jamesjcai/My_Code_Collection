@@ -61,7 +61,7 @@ expr_common=D{3};
      line([idx1 idx1],ylim,'color','r')
      line([idx2 idx2],ylim,'color','m')
      for k=1:length(idx3)
-     line([idx3(k) idx3(k)],ylim,'color','g')
+        line([idx3(k) idx3(k)],ylim,'color','g')
      end
      line(xlim,[0.05 0.05],'color','r');
      ylim([0 0.5]);

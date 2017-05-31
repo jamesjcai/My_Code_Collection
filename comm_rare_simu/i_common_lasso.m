@@ -148,7 +148,7 @@ end
 %%
 tic;
 disp('Using PLS method...');    
-[xl,yl,xs,ys,betapls,pctvar,mse] = plsregress(g012,expr,4);    
+[xl,yl,xs,ys,betapls,pctvar,mse] = plsregress(g012,expr,2);    
 betapls=betapls(2:end);
 figure(fb);
 subplot(6,1,4)
