@@ -14,11 +14,11 @@ if(nargin<8)
 				pvOutputThreshold = 1e-5;
 				if(nargin<4)
 					error('Too few parameters');
-				end				
-			end
-		end
-	end
-end
+				end;				
+			end;
+		end;
+	end;
+end;
 
 gene = gene.Clone();
 %snps = snps.Clone();
@@ -35,45 +35,45 @@ switch useModel
 		nVarTested = 2;
 	otherwise
 		error('Unknown value of useModel');
-end
+end;
 
 if(verbose)
 	tic
 	status = @status_T;
 else
 	status = @status_F;
-end
+end;
 
 % Check dimensions
 status('Checking input data dimensions',[]);
 if(snps.nCols()*snps.nRows() == 0)
 	error('Empty genotype dataset');
-end
+end;
 if(gene.nCols()*gene.nRows() == 0)
 	error('Empty expression dataset');
-end
+end;
 if(snps.nCols ~= gene.nCols)
 	error('Different number of samples in the genotype and gene expression files');
-end
+end;
 if(cvrt.nRows>0)
 	if(snps.nCols ~= cvrt.nCols)
 		error('Wrong number of samples in the file with covariates');
-	end	
-end
+	end;	
+end;
 %% ################################# error covariance processing #################################
 
 if(~isempty(errorCovariance))
 	status('Processing the errorCovariance matrix');
 	if(size(errorCovariance,1)~=size(errorCovariance,2))
 		error('The covariance matrix is not square');
-	end
+	end;
 	if(size(errorCovariance,1)~=snps.nCols)
 		error('The covariance matrix size does not match the data');
-	end	
+	end;	
 	% test for symmetry
 	if(~all(all(errorCovariance==errorCovariance')))
 		error('The covariance matrix is not symmetric');
-	end
+	end;
 	[v,d] = eig(errorCovariance);	
 	%  errorCovariance == v*d*v'
 	%  errorCovariance^0.5 == v*sqrt(d)*v'
@@ -81,13 +81,13 @@ if(~isempty(errorCovariance))
 	d = diag(d);
 	if(any(d<=0))
 		error('The covariance matrix is not positive definite');
-	end
+	end;
 	correctionMatrix = v*diag(1./sqrt(d))*v';
 	clear v d;
 else 
 	clear correctionMatrix;
 	correctionMatrix = [];
-end
+end;
 
 %%	################################# covariates processing #################################
 
@@ -100,14 +100,14 @@ cvrt = [ones(1,snps.nCols);cvrt.dataSlices{:}];
 if(~isempty(correctionMatrix))
 	status('Rotating cvrt based on the errorCovariance matrix');
 	cvrt = cvrt * correctionMatrix;
-end
+end;
 
 % Orthonormalize covariates
 status('Orthonormalizing covariates');
 [q, r] = qr(cvrt',0);
 if(min(abs(diag(r))) < eps(class(r))*snps.nCols())
 	error('Colinear or zero covariates detected.');
-end
+end;
 cvrt = q';
 clear q;
 
@@ -120,7 +120,7 @@ gene.SetNanRowMean();
 if(~isempty(correctionMatrix))
 	status('Rotating expression based on the errorCovariance matrix');
 	gene.RowMatrixMultiply(correctionMatrix);
-end
+end;
 
 gene.RowStandardizeCentered();
 
@@ -130,7 +130,7 @@ for sl = 1:gene.nSlices
 	slice = gene.dataSlices{sl};
 	slice = slice - (slice*cvrt')*cvrt;
 	gene.dataSlices{sl} = slice;
-end
+end;
 clear sl d slice;
 status('Standardizing expression');
 gene.RowRemoveZeroEps();
@@ -157,7 +157,7 @@ switch useModel
 			fThresh = finv(1-pvOutputThreshold, nVarTested,dfFull);
 			r2Thresh = fThresh * nVarTested ./ (dfFull + fThresh*nVarTested);
 			clear fThresh;
-        end
+		end;
 	case modelLINEAR
 		if(pvOutputThreshold >= 1)
 			rThresh = 0;
@@ -165,8 +165,8 @@ switch useModel
 			tThresh = -tinv(pvOutputThreshold/2,dfFull);
 			rThresh = sqrt(  tThresh.^2 ./  (dfFull + tThresh.^2)  );
 			clear tThresh;
-        end
-end
+		end;
+end;
 
 gene_names = vertcat(gene.rowNameSlices{:});
 snps_names = vertcat(snps.rowNameSlices{:});
@@ -189,14 +189,14 @@ for sc = 1:snps.nSlices
 	for d = 1:length(cursnps)
 		if(~isempty(correctionMatrix))
 			cursnps{d} = cursnps{d} * correctionMatrix;
-        end
+		end;
 		cursnps{d} = cursnps{d} - (cursnps{d}*cvrt')*cvrt;
 		for w = 1:(d-1)
 			cursnps{d} = cursnps{d} - ...
 				bsxfun(@times, sum(cursnps{d}.*cursnps{w},2), cursnps{w});
-        end
+		end;
 		cursnps{d} = RowStandardizeCentered(cursnps{d});
-    end
+	end;
 
 	nrcs = size(cursnps{1},1);
 
@@ -206,13 +206,13 @@ for sc = 1:snps.nSlices
 		
 		switch useModel
 			case modelLINEAR
-			%cursnps{1}
-			%curgene
-			%pause
+			cursnps{1}
+			curgene
+			pause
 				cor = (cursnps{1}*curgene');
 
-			%	cor
-			%	pause
+				cor
+				pause
 				select = (abs(cor) >= rThresh);
 				r = cor(select);
 				test = r.*sqrt( dfFull ./ (1-r.^2));
@@ -221,13 +221,13 @@ for sc = 1:snps.nSlices
 				r2 = (cursnps{1}*curgene').^2;
 				for d = 2:nVarTested
 					r2 = r2 + (cursnps{d}*curgene').^2;
-				end
+				end;
 				select = (r2 >= r2Thresh);
 				rsub = r2(select);
 				test = rsub./(1-rsub) * (dfFull/nVarTested);
 				pv = fcdf(1./test, dfFull, nVarTested);					
-        end
-		[sind, gind] = find(select);
+		end;
+		[sind gind] = find(select);
 		FDR_collection{sc,gc} = [snps_offset+sind, gene_offset+gind, test, pv];
 		dumpCount = dumpCount + size(FDR_collection{sc,gc},1); %signifs_sic(1); 
 
@@ -235,9 +235,9 @@ for sc = 1:snps.nSlices
 		FDR_total_count = FDR_total_count + nrcg*nrcs;
 
 		disp([num2str(floor(FDR_total_count/totalCount*1000)/10,'%3.1f') '% done, ' num2str(dumpCount) ' eQTLs found.']);
-    end
+	end;
 	snps_offset = snps_offset + nrcs;
-end
+end;
 t2 = toc;
 clear cor r2 select test pv cursnps curgene
 
@@ -252,13 +252,13 @@ FDR = FDR_collection(:,4)*FDR_total_count./(1:size(FDR_collection,1))';
 FDR(end) = min(FDR(end),1);
 for i=(size(FDR_collection,1)-1):-1:1
 	FDR(i) = min(FDR(i),FDR(i+1));
-end
+end;
 
 status('Saving results');
 [fid, msg] = fopen(Output_file_name,'w');
 if(fid == -1)
 	error(msg)
-end
+end;
 fprintf(fid,'SNP\tgene\t%s\tp-value\tFDR\r\n', statistic_name);
 step = 1000;
 for part = 1:ceil(size(FDR_collection,1)/step)
@@ -269,7 +269,7 @@ for part = 1:ceil(size(FDR_collection,1)/step)
 	gdump = gene_names(FDR_collection(fr:to,2));
 	adump = [sdump gdump num2cell([FDR_collection(fr:to,3:4), FDR(fr:to)])]';
 	fprintf(fid,'%s\t%s\t%f\t%e\t%e\r\n',adump{:});
-end
+end;
 fclose(fid);
 status('');
 clear cor select adump pdump pv testmatrix
@@ -284,7 +284,7 @@ end
 function status_T(text,~)
 	if(nargin==1)
 		disp(['Task	finished in ' num2str(toc) ' seconds']);
-	end
+	end;
 	disp(text);
 	tic;
 end
@@ -300,7 +300,7 @@ function y = impute_row_mean(x)
 			where1 = isnan(x(:,j));
 			x(where1,j) = rowmean(where1);
 		end
-	end
+	end;
 	y = {x};
 end
 
@@ -312,10 +312,10 @@ function dummies = snps_split_for_ANOVA(x)
 		md = mode(x,2);
 		dummies{d} = bsxfun(@eq,x,md);
 		x(dummies{d}) = NaN;
-	end
+	end;
 	if(~all(isnan(x(:))))
 		error('More than 3 SNP values encountered. Not ok for ANOVA as it is coded right now.');
-	end
+	end;
 end
 
 function y = RowStandardizeCentered(x)

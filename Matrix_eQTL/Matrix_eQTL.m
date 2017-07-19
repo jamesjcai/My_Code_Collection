@@ -9,7 +9,7 @@ addpath Matrix_eQTL_Matlab
 %% Settings
 
 % Linear model to use, modelANOVA or modelLINEAR
-useModel = modelLINEAR; % modelANOVA or modelLINEAR
+useModel = modelANOVA; % modelANOVA or modelLINEAR
 
 % Genotype file name
 SNP_file_name = 'Sample_Data/SNP.txt';
