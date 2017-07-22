@@ -27,3 +27,27 @@ toc
 % tic
 % [data4] = parse_json1(s4);
 % toc
+
+%%
+
+s3=urlread('http://epigenomesportal.ca/cgi-bin/api/getDataHub.py?session=4123');
+d=parse_json(s3);
+a=fieldnames(d.samples);
+%%
+for k=1:length(a)    
+    b=getfield(d.samples,a{k});
+    %if ~strcmp(a{k},b.SAMPLE_ID)
+    %       a{k}
+    %end
+    try
+    fprintf('%s\t%s\t%s\t%s\t%s\n',a{k},b.donor_id,b.donor_age,...
+        b.donor_sex,b.donor_ethnicity);
+    catch
+    end    
+    try
+    fprintf('%s\t%s\t%s\t%s\t%s\n',a{k},b.DONOR_ID,b.DONOR_AGE,...
+        b.DONOR_SEX,b.DONOR_ETHNICITY);
+    catch
+    end
+
+end
