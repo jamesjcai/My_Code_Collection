@@ -206,13 +206,7 @@ for sc = 1:snps.nSlices
 		
 		switch useModel
 			case modelLINEAR
-			%cursnps{1}
-			%curgene
-			%pause
 				cor = (cursnps{1}*curgene');
-
-			%	cor
-			%	pause
 				select = (abs(cor) >= rThresh);
 				r = cor(select);
 				test = r.*sqrt( dfFull ./ (1-r.^2));

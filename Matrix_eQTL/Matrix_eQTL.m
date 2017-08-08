@@ -9,7 +9,7 @@ addpath Matrix_eQTL_Matlab
 %% Settings
 
 % Linear model to use, modelANOVA or modelLINEAR
-useModel = modelANOVA; % modelANOVA or modelLINEAR
+useModel = modelLINEAR; % modelANOVA or modelLINEAR
 
 % Genotype file name
 SNP_file_name = 'Sample_Data/SNP.txt';
@@ -22,7 +22,7 @@ expression_file_name = 'Sample_Data/GE.txt';
 covariates_file_name = [];  %'Sample_Data/Covariates.txt';
 
 % Output file name
-output_file_name = 'Sample_Data/eQTL_results_M.txt';
+output_file_name = 'Sample_Data/eQTL_results_M_lin.txt';
 
 % Only associations significant at this level will be saved
 pvOutputThreshold = 1e-2;
