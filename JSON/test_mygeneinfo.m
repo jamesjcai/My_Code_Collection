@@ -24,9 +24,9 @@ toc
 %Elapsed time is 36.767753 seconds.
 
 %%
-% tic
-% [data4] = parse_json1(s4);
-% toc
+tic
+[data4] = parse_json1(s4);
+toc
 
 %%
 
