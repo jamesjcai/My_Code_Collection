@@ -1,5 +1,5 @@
 %EMD (Earth Movers Distance) 
-%   e=emd(w1,w2,C)
+%   e=emd_mex(w1,w2,C)
 %   [e,F]=emd(w1,w2,C)
 %   w1 is the weight vector of the first signature    (1 by n1)
 %   w2 is the weight vector of the second signature   (1 by n2)
