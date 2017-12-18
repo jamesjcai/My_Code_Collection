@@ -1,0 +1,79 @@
+<html><head><title>histogram (MATLAB Function Reference)</title>
+
+</head>
+
+<body bgcolor=#ffffff>
+
+<table border=0 width="100%" cellpadding=0 cellspacing=0><tr>
+<td valign=baseline bgcolor="#d9e1e1"><b>MATLAB Function Reference</b></td>
+</tr>
+</table>
+
+<P>
+<font class=headdoc size=+3 color="#990000">histogram</font>
+
+<p>Compute a histogram</p>
+
+<p>
+<font class=midsup size=+1 color="#990000"><b>Syntax</b></font>
+<br>
+
+<ul><pre>
+[result,descriptor] = histogram(x)
+[result,descriptor] = histogram(x,descriptor)
+</pre></ul>
+
+<p>
+<font class=midsup size=+1 color="#990000"><b>Description</b></font>
+<br>
+
+<p>
+The <code>discriptor</code> describes the cells of the histogram. The
+<code>discriptor</code> consists of three elements
+<code>[lower,upper,ncell]</code>. The default values are
+<code>lower=min(x)-delta/2</code>, <code>upper=max(x)+delta/2</code> and
+<code>ncell=ceil(sqrt(length(x)))</code>, where <code>delta=(max(x)-min(x))/(length(x)-1)</code>.
+<P>
+Its assumed that <code>lower < upper</code> and
+<code>ncell >= 1</code>. Futhermore its assumed that <code>x</code> is a row
+vector.
+<P>
+The <code>result</code> is a row vector containing the histogram of <code>x</code>.
+The index of the histogram cells is computed by <code>index = round( (x(i)-lower) / (upper-lower) * ncell
+) + 1/2</code>. If the index is out of the range <code>1 <= index <=
+ncell</code>, consequently <code>x(i) < lower</code> or <code>upper <= x(i)</code>, the element of <code>x(i)</code> is
+excluded from the histogram.
+<P>
+
+<font class=midsup size=+1 color="#990000"><b>See Also</b></font>
+
+<p>
+<a href="histogram2.html"> histogram2 </A>
+<P>
+
+<font class=midsup size=+1 color="#990000"><b>Literature</b></font>
+
+<p>
+None
+<P>
+
+<font class=midsup size=+1 color="#990000"><b>Source code</b></font>
+
+<p>
+<a href="../source/histogram.m"> histogram.m </A>
+<P>
+
+<table border=0 width="100%" cellpadding=0 cellspacing=0><tr>
+<td valign=baseline bgcolor="#d9e1e1"><b>MATLAB Function Reference</b></td>
+</tr>
+</table>
+
+<br>
+<br>
+<center>
+Copyright <a href="http://www.cs.rug.nl/~rudy">R. Moddemeijer</a>
+
+</body>
+</html>
+
+

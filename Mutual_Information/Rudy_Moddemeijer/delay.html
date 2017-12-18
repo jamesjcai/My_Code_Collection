@@ -1,0 +1,180 @@
+<html><head><title>delay (MATLAB Function Reference)</title>
+
+</head>
+
+<body bgcolor=#ffffff>
+
+<table border=0 width="100%" cellpadding=0 cellspacing=0><tr>
+<td valign=baseline bgcolor="#d9e1e1"><b>MATLAB Function Reference</b></td>
+</tr>
+</table>
+
+<P>
+<font class=headdoc size=+3 color="#990000">delay</font>
+
+<p>Estimates the delay of y with respect to x using the information
+theoretic delay criterion
+</p>
+
+<p>
+<font class=midsup size=+1 color="#990000"><b>Syntax</b></font>
+<br>
+
+<ul><pre>
+[lag,criterion] = delay(x,y)
+[lag,criterion] = delay(x,y,shift)
+[lag,criterion] = delay(x,y,shift,order)
+[lag,criterion] = delay(x,y,shift,order,base)
+</pre></ul>
+
+<p>
+<font class=midsup size=+1 color="#990000"><b>Description</b></font>
+<br>
+
+<p>
+Some primitive delay estimation algorithms are implemented in time-domain;
+for example the cross-correlation method. Most advanced time delay
+estimation algorithms are implemented in frequency-domain; for example the
+generalized cross-correlation method. The spectral estimation in case of
+short signal segments is the most important weakness of the frequency-domain
+implementations. Amongst other reasons R. Moddemeijer searched in his thesis
+for a time-domain implementation of an advanced delay estimation algorithm
+and found the "information theoretic delay criterion".
+<p>
+After publication of the thesis there has not been any further research in
+this direction. On the other hand the proposed method deserves further
+investigations. The main advantage of the method is the proven unambiguity
+of the criterion for a large enough order. Therefore the method is a suitable
+delay-estimation method in case of for quasi-periodic processes.
+<p>
+In theory the criterion as proposed is only valid for an x and y signal
+which have a common multidimensional normal distribution. Like the
+cross-correlation function the information theoretical delay criterion can
+be applied as a general purpose method in a much wider context.
+For <code>order=1</code> the criterion reduces to <code>-1/2
+log(1-rho^2)</code> where <code>rho</code> is the correlation coefficient.
+<p>
+It can be proven that the criterion is a time-domain implementation of the
+maximum likelihood delay estimation algorithm as publiced by Knapp and Carter.
+<p>
+The <code>shift</code> is in absolute value the maximum relative shift of
+the two signals. As a consequence the estimated delay <code>lag</code> is
+bounded <code>-shift <= lag <= shift</code>. The resulting
+<code>criterion</code> is computed from a lag of <code>-shift</code> at
+index <code>1</code> to a lag of <code>shift</code> at index <code>2*shift+1</code>.
+<p>
+The <code>order</code> determines the computational effort, the effort is
+appproximately quadratic in the <code>order</code> and linear in
+<code>length(x)</code>. For <code>order=1</code> the method is equivalent
+with the cross-correlation method. For larger orders the method is better
+capable of including the dependancies of subsequent samples into the
+estimate. For large enough order the criterion has in theory no local
+minima; as a consequence the criterion has only one maximum. The order
+should be choosen large enough; the criterion may not show any local
+minima. The information criterions measures the mutual informations of two
+signal segments of x resp. y of size <code>order</code>.
+<P>
+The <code>base</code> of the logarithm determines the unit of
+measurement of the information criterion. Default base e (nats) is used, alternative choises are 2 (bit)
+and 10 (Hartley).
+<p>
+Note: the implementation is computationally intensive; an improved less
+intensive implementation is possible. If there is an application of the
+method, the author will provide this improved implementation.
+<p>
+
+<font class=midsup size=+1 color="#990000"><b>Example</b></font>
+
+<p>
+The standard delay-model; a common signal and independent noises added to
+the x- resp. the y-signal. As common signal we have choosen for 2nd order
+AR-filtered noise.
+<br>
+<P>
+<code>
+r=31/32;<br>
+theta=pi/16;<br>
+a=[1,(-2 * r * cos(theta)), r^2];<br>
+b=[1];<br>
+signal=(filter(b,a,normrnd(0,1,1,100)));<br>
+x=signal+8*normrnd(0,1,1,100);<br>
+y=8*normrnd(0,1,1,100);<br>
+y(4:100)=y(4:100)+signal(1:97);<br>
+[lag,criterion]=delay(x,y);<br>
+lag = 3<br>
+criterion =  Columns 1 through 7<br>
+    0.2026    0.2178    0.2413    0.3085    0.3504    0.2992    0.3209<br>
+Columns 8 through 14<br>
+    0.3368    0.3331    0.3514    0.2804    0.2794    0.2333    0.1915<br>
+Columns 15 through 21 <br>
+    0.1934    0.2351    0.3108    0.4260    0.5890    0.7917    0.9486<br>
+Columns 22 through 28 <br>
+    1.2224    1.4508    1.4732    1.2399    1.0223    0.7930    0.6299<br>
+Columns 29 through 35 <br>
+    0.4734    0.3699    0.3041    0.2302    0.2114    0.2082    0.2017<br>
+Columns 36 through 41 <br>
+    0.2354    0.2721    0.2491    0.2363    0.2434    0.2193<br>
+</code>
+<P>
+
+<font class=midsup size=+1 color="#990000"><b>See Also</b></font>
+
+<p>
+none
+<P>
+
+<font class=midsup size=+1 color="#990000"><b>Literature</b></font>
+
+<p>
+Moddemeijer, R.,
+<I>An information theoretical delay estimator,</I>
+Ninth Symp. on Information Theory in the Benelux,
+May 26-27, 1988, Mierlo (NL),
+pp. 121-128,
+Ed. K.A. Schouwhamer Immink,
+<A  href=http://ei1.ei.ele.tue.nl/wic> Werkgemeenschap Informatie- en
+Communicatietheorie</A>, Enschede (NL),
+ISBN: 90-71048-04-7,
+<A  HREF=http://www.cs.rug.nl/~rudy/papers/abstracts/RM8801.html> abstract </A>,
+<A  HREF=http://www.cs.rug.nl/~rudy/papers/bibtex/RM8801.bib> BibTeX </A>,
+<P>
+Moddemeijer, R.,
+<I>Delay-Estimation with Application to Electroencephalograms in Epilepsy (Phd-thesis),</I>
+Universiteit Twente,
+1989,
+Enschede (NL),
+ISBN: 90-9002668-1,
+<A  HREF=http://www.cs.rug.nl/~rudy/papers/abstracts/RM8901.html> abstract </A>,
+<A  HREF=http://www.cs.rug.nl/~rudy/papers/bibtex/RM8901.bib> BibTeX </A>,
+<p>
+Knapp, C.H. and Carter, C.,
+<I>The generalized correlation method for estimation of time delay,</I>
+IEEE Transactions on ASSP, 24, pp 320-327,
+<p>
+
+<font class=midsup size=+1 color="#990000"><b>Source code</b></font>
+
+<p>
+<a href="../source/delay.m"> delay.m </A>
+<P>
+
+<table border=0 width="100%" cellpadding=0 cellspacing=0><tr>
+<td valign=baseline bgcolor="#d9e1e1"><b>MATLAB Function Reference</b></td>
+</tr>
+</table>
+
+<br>
+<br>
+<center>
+Copyright <a href="http://www.cs.rug.nl/~rudy">R. Moddemeijer</a>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

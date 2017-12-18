@@ -1,0 +1,87 @@
+<html><head><title>histogram2 (MATLAB Function Reference)</title>
+
+</head>
+
+<body bgcolor=#ffffff>
+
+<table border=0 width="100%" cellpadding=0 cellspacing=0><tr>
+<td valign=baseline bgcolor="#d9e1e1"><b>MATLAB Function Reference</b></td>
+</tr>
+</table>
+
+<P>
+<font class=headdoc size=+3 color="#990000">histogram2</font>
+
+<p>Compute a two dimensional histogram</p>
+
+<p>
+<font class=midsup size=+1 color="#990000"><b>Syntax</b></font>
+<br>
+
+<ul><pre>
+[result,descriptor] = histogram2(x,y)
+[result,descriptor] = histogram2(x,y,descriptor)
+</pre></ul>
+
+<p>
+<font class=midsup size=+1 color="#990000"><b>Description</b></font>
+<br>
+
+<p>
+The <code>discriptor</code> describes the cells of the histogram. The
+<code>discriptor</code> consists of two row vectors with three elements
+<code>[lowerx,upperx,ncellx;lowery,uppery,ncelly]</code>. The default values are
+<code>lowerx=min(x)-deltax/2</code>, <code>upperx=max(x)+deltax/2</code> and
+<code>ncellx=ceil(length(x)^(1/3))</code>, where
+<code>deltax=(max(x)-min(x))/(length(x)-1)</code> and similar for <code>y</code>.
+<P>
+Its assumed that <code>lowerx < upperx</code>, <code>lowery <
+uppery</code>, <code>ncelly >= 1</code>,
+<code>ncelly >= 1</code> and <code>length(x) == length(y)</code>. Futhermore its assumed that both <code>x</code>
+and <code>y</code> are row
+vectors.
+<P>
+The <code>result</code> is a matrix vector containing the histogram of
+<code>x</code> and <code>y</code>.
+The indices <code>(indexx,indexy)</code> of the histogram cells are computed by <code>indexx = round( (x(i)-lowerx) / (upperx-lowerx) * ncellx
+) + 1/2</code> and <code>indexy = round( (x(i)-lowery) / (uppery-lowery) * ncelly
+) + 1/2</code>. If one of the indices is out of the range <code>1 <= indexx <=
+ncellx</code> or <code>1 <= indexy <=
+ncelly</code>, consequently <code>x(i) < lowerx</code>,
+<code>upperx <= x(i)</code>,<code>y(i) < lowery</code> or
+<code>uppery <= y(i)</code>, the elements <code>x(i)</code> and
+<code>y(i)</code> are excluded from the histogram.
+<P>
+
+<font class=midsup size=+1 color="#990000"><b>See Also</b></font>
+
+<p>
+<a href="histogram.html"> histogram </A>
+<P>
+
+<font class=midsup size=+1 color="#990000"><b>Literature</b></font>
+
+<p>
+None
+<P>
+
+<font class=midsup size=+1 color="#990000"><b>Source code</b></font>
+
+<p>
+<a href="../source/histogram2.m"> histogram2.m </A>
+<P>
+
+<table border=0 width="100%" cellpadding=0 cellspacing=0><tr>
+<td valign=baseline bgcolor="#d9e1e1"><b>MATLAB Function Reference</b></td>
+</tr>
+</table>
+
+<br>
+<br>
+<center>
+Copyright <a href="http://www.cs.rug.nl/~rudy">R. Moddemeijer</a>
+
+</body>
+</html>
+
+

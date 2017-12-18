@@ -1,0 +1,127 @@
+<html><head><title>entropy2 (MATLAB Function Reference)</title>
+
+</head>
+
+<body bgcolor=#ffffff>
+
+<table border=0 width="100%" cellpadding=0 cellspacing=0><tr>
+<td valign=baseline bgcolor="#d9e1e1"><b>MATLAB Function Reference</b></td>
+</tr>
+</table>
+
+<P>
+<font class=headdoc size=+3 color="#990000">entropy2</font>
+
+<p>Estimate the entropy of two stationary signal with independent pairs of
+samples</p>
+
+<p>
+<font class=midsup size=+1 color="#990000"><b>Syntax</b></font>
+<br>
+
+<ul><pre>
+[estimate,Nbias,sigma,descriptor] = entropy2(x,y)
+[estimate,Nbias,sigma,descriptor] = entropy2(x,y,descriptor)
+[estimate,Nbias,sigma,descriptor] = entropy2(x,y,descriptor,base)
+[estimate,Nbias,sigma,descriptor] = entropy2(x,y,descriptor,base,approach)
+</pre></ul>
+
+<p>
+<font class=midsup size=+1 color="#990000"><b>Description</b></font>
+<br>
+
+<p>
+Entropy estimation is a two stage process; first a two demensional <a
+href="histogram2.html"> histogram2 </a> is estimated and thereafter the
+entropy is calculated. For the explanation of the usage of the
+<code>descriptor</code> of the histogram see <a href="histogram2.html">
+histogram2 </a>.
+<P>
+In case of a disrete stochastic variable <code>i</code> and <code>j</code> in the integer subranges
+<code>lowerx <= i < upperx</code> and <code>lowery <= j < uppery</code> the descriptor should be selected
+as <code>[lowerx,upperx,upperx-lowerx;lowery,uppery,uppery-lowery]</code>. The
+R(epresentation)-unbiased entropy will be estimated.
+<P>
+In case of a continuous stochastic variable the descriptor can be left
+unspecified. In this case the default descriptor of <a href="histogram2.html">
+histogram2 </a> will be used.
+<P>
+The estimate depends on the value of <code>approach</code> 
+<ul>
+<LI> <code>'unbiased'</code>: a N(umber)-unbiased estimate (default),
+<LI> <code>'biased'</code>: a N(umber)-biased estimate and
+<LI> <code>'mmse'</code>: a minimum Mean Square Error estimate, obtained by
+balancing bias and variance after N-bias correction.
+</ul>
+The <code>base</code> of the logarithm determines the unit of
+measurement. Default base e (nats) is used, alternative choises are 2 (bit)
+and 10 (Hartley).
+<P>
+As a result the function returns the <code>estimate</code>, the N-bias
+(<code>Nbias</code>) of the estimate, the estimated standard error <code>sigma</code> and the used <code>descriptor</code>.
+<P>
+
+<font class=midsup size=+1 color="#990000"><b>See Also</b></font>
+
+<p>
+<a href="entropy.html"> entropy </A><BR>
+<a href="histogram2.html"> histogram2 </A>
+<P>
+
+<font class=midsup size=+1 color="#990000"><b>Literature</b></font>
+
+<p>
+Moddemeijer, R.
+<I>On Estimation of Entropy and Mutual Information of Continuous Distributions,</I>
+Signal Processing,
+1989, 
+vol. 16,
+nr. 3,
+pp. 233-246,
+<A  HREF="http://www.cs.rug.nl/~rudy/papers/abstracts/RM8902.html"> abstract </A>,
+<A  HREF="http://www.cs.rug.nl/~rudy/papers/bibtex/RM8902.bib"> BibTeX </A>,
+<P>
+For the principle of Minimum Mean Square Error estimation see:
+<P>
+Moddemeijer, R.
+<I><A href="http://www.cs.rug.nl/~rudy/papers/documents/RM9902.ps.gz"> An efficient algorithm for selecting optimal configurations of
+AR-coefficients</A></I>,
+Twentieth Symp. on Information Theory in the Benelux,
+May 27-28, 1999, Haasrode (B),
+pp 189-196,
+eds. A. Barb&eacute; et. al.,
+<A  href=http://ei1.ei.ele.tue.nl/wic> Werkgemeenschap Informatie- en
+Communicatietheorie</A>, Enschede (NL),
+and 
+IEEE Benelux Chapter on Information Theory,
+ISBN: 90-71048-14-4,
+<A  HREF="http://www.cs.rug.nl/~rudy/papers/abstracts/RM9902.html"> abstract </A>,
+<A  HREF="http://www.cs.rug.nl/~rudy/papers/bibtex/RM9902.bib"> BibTeX </A>,
+<P>
+
+<font class=midsup size=+1 color="#990000"><b>Source code</b></font>
+
+<p>
+<a href="../source/entropy2.m"> entropy2.m </A>
+<P>
+
+<table border=0 width="100%" cellpadding=0 cellspacing=0><tr>
+<td valign=baseline bgcolor="#d9e1e1"><b>MATLAB Function Reference</b></td>
+</tr>
+</table>
+
+<br>
+<br>
+<center>
+Copyright <a href="http://www.cs.rug.nl/~rudy">R. Moddemeijer</a>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

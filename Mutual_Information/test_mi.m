@@ -22,3 +22,7 @@ mi(x,y)
 
 %%
 KSG_estimator_jc_parfor(x,y,5)
+
+%%
+addpath('Rudy_Moddemeijer')
+information(x',y')
