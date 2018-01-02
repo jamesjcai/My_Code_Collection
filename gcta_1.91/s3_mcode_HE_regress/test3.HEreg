@@ -1,0 +1,10 @@
+HE-CP
+Coefficient     Estimate        SE_OLS          SE_Jackknife    P_OLS           P_Jackknife     
+Intercept       -0.000250572    0.000360163     1.22192e-05     0.486604        1.89349e-93     
+V(G)/Vp         0.0163642       0.00570469      0.00901187      0.00412364      0.0693943       
+
+HE-SD
+Coefficient     Estimate        SE_OLS          SE_Jackknife    P_OLS           P_Jackknife     
+Intercept       -0.999996       0.000525369     0.0239653       0               0               
+V(G)/Vp         0.0162286       0.00832143      0.0107397       0.0511508       0.130769        
+

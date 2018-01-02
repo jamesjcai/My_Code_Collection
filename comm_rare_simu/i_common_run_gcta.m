@@ -21,7 +21,7 @@ end
  % fprintf(fid,'%s\t3.0\n',mark.rsid{idx3});
  fclose(fid); 
  
- [status2]=system('gcta.exe --bfile aaa --simu-qt --simu-causal-loci common.causal.snplist --simu-hsq 0.5 --simu-rep 1 --out aaa');
+[status2]=system('gcta.exe --bfile aaa --simu-qt --simu-causal-loci common.causal.snplist --simu-hsq 0.5 --simu-rep 1 --out aaa');
  % system('gcta --bfile aaa --simu-cc 500 500 --simu-causal-loci causal.snplist --simu-hsq 0.5 --simu-k 0.1 --simu-rep 3 --out aaatest');
 
 fid=fopen('aaa.phen','r');

@@ -1,0 +1,3 @@
+# MLMA analysis - If you have already computed the GRM
+gcta64 --mlma --bfile test --grm test --pheno test.phen --out test --thread-num 10
+

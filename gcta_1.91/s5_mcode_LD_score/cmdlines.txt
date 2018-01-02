@@ -1,0 +1,3 @@
+LD score is defined as the sum of LD r2 between a variant and all the variants in a region
+# LD score is defined as the sum of LD r2 between a variant and all the variants in a region
+..\bin\gcta64 --bfile ..\test --ld-score --ld-wind 1000 --ld-rsq-cutoff 0.01 --out test

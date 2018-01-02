@@ -1,0 +1,3 @@
+.\bin\gcta64 --bfile test --make-grm --out test_grm
+.\bin\gcta64  --bfile test  --chr 1  --maf 0.1  --max-maf 0.4  --make-grm  --out test_grm_01_04
+

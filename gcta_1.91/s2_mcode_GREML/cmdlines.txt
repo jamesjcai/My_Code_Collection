@@ -1,0 +1,10 @@
+# GCTA-GREML: Estimate variance explained by all the SNPs
+
+# Without GRM (fitting the model under the null hypothesis that the additive genetic variance is zero)
+gcta64  --reml  --pheno test.phen  --out test_null
+gcta64  --reml  --pheno test.phen  --keep test.indi.list  --out test_null
+
+# One GRM (quantitative traits)
+gcta64  --reml  --grm test  --pheno test.phen  --reml-pred-rand –qcovar test_10PCs.txt  --out test
+gcta64  --reml  --grm test  --pheno test.phen  --grm-adj 0  --grm-cutoff 0.05  --out test
+gcta64  --reml  --grm test  --pheno test.phen  --keep test.indi.list  --grm-adj 0  --out test

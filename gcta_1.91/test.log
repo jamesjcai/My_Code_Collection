@@ -1,0 +1,34 @@
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version 1.91.1 beta
+* (C) 2010-2017, The University of Queensland
+* Please report bugs to: Jian Yang <jian.yang@uq.edu.au>
+*******************************************************************
+Analysis started: 01/02/18 11:03:03 Central Standard Time
+Hostname: CAILAB2X384-
+
+Options: 
+ 
+--bfile test 
+--autosome 
+--make-grm 
+--out test 
+
+Note: GRM is computed using the SNPs on the autosome.
+Reading PLINK FAM file from [test.fam]...
+3925 individuals to be included from [test.fam].
+Reading PLINK BIM file from [test.bim]...
+1000 SNPs to be included from [test.bim].
+Computing the genetic relationship matrix (GRM) ...
+Subset 1/1, no. subject 1-3925
+  3925 samples, 1000 markers, 7704775 GRM elements
+IDs for the GRM file has been saved in the file [test.grm.id]
+Reading PLINK BED file from [test.bed] in SNP-major format...
+  100% Finished in 0.0 min
+The GRM computation is completed.
+Saving GRM...
+GRM has been saved in the file [test.grm.bin]
+Number of SNPs in each pair of individuals has been saved in the file [test.grm.N.bin]
+
+Analysis finished: 01/02/18 11:03:21 Central Standard Time
+Computational time: 17.627167 second(s)

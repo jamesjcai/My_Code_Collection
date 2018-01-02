@@ -1,0 +1,2 @@
+# One GRM
+gcta64 --HEreg --grm test --pheno test.phen --out test
