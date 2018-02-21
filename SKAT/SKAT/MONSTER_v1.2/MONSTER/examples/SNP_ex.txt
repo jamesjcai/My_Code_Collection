@@ -1,0 +1,3 @@
+SNPset1 1 variant2 variant5 variant3
+SNPset1 0 1 2 3
+SNPset2 0 variant1 variant4

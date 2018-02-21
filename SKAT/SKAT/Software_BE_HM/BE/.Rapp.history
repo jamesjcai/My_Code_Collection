@@ -1,0 +1,255 @@
+2^15-1
+intToBits(5)
+which(intToBits(5))
+which(intToBits(5)==1)
+which(intToBits(1)==1)
+which(intToBits(2)==1)
+which(intToBits(3)==1)
+which(intToBits(4)==1)
+which(intToBits(5)==1)
+which(intToBits(6)==1)
+which(intToBits(7)==1)
+which(intToBits(8)==1)
+which(intToBits(9)==1)
+which(intToBits(10)==1)
+which(intToBits(11)==1)
+which(intToBits(12)==1)
+which(intToBits(13)==1)
+which(intToBits(14)==1)
+which(intToBits(15)==1)
+which(intToBits(16)==1)
+which(intToBits(17)==1)
+which(intToBits(18)==1)
+l1 <- list()
+l1[[1]] <- 1
+l2 <- list()
+l2[[1]] <- l1
+l2
+l2[[1]]
+l2[[1]][[1]]
+l2[[1]][[1]][1]
+help(intersect)
+foo <- cbind(c(1,2,3,4,5),c(4,2,7,5,3),c(8,3,6,9,0))
+foo
+foo.m <- as.matrix(foo,ncol=3)
+foo.m
+var(foo.m)
+help(rnorm)
+library(MASS)
+mvnorm(n=1,mu=c(-1,-1,-1,-1,-1),Sigma=matrix(cbind(c(1,.5,.3,0,0),c(.5,2,.3,0,0),c(.3,.3,3,0,0),c(0,0,0,1,.5),c(0,0,0,.5,1))))
+mvrnorm(n=1,mu=c(-1,-1,-1,-1,-1),Sigma=matrix(cbind(c(1,.5,.3,0,0),c(.5,2,.3,0,0),c(.3,.3,3,0,0),c(0,0,0,1,.5),c(0,0,0,.5,1))))
+matrix(cbind(c(1,.5,.3,0,0),c(.5,2,.3,0,0),c(.3,.3,3,0,0),c(0,0,0,1,.5),c(0,0,0,.5,1)),ncol=5)
+s <- matrix(cbind(c(1,.5,.3,0,0),c(.5,2,.3,0,0),c(.3,.3,3,0,0),c(0,0,0,1,.5),c(0,0,0,.5,1)),ncol=5)
+mvrnorm(n=1,mu=c(-1,-1,-1,-1,-1),Sigma=s)
+mvrnorm(n=10,mu=c(-1,-1,-1,-1,-1),Sigma=s)
+mvrnorm(n=10,mu=c(1,1,1,1,1),Sigma=s)
+s <- matrix(cbind(c(1,.5,.3,0,0),c(.5,2,.3,0,0),c(.3,.3,3,0,0),c(0,0,0,1,.5),c(0,0,0,.5,.5)),ncol=5)
+mvrnorm(n=10,mu=c(1,1,1,1,1),Sigma=s)
+var(mvrnorm(n=10,mu=c(1,1,1,1,1),Sigma=s))
+s
+mv1 <- mvrnorm(n=1000,mu=c(1,1,1,1,1),Sigma=s)
+var(mv1)
+vec1 <- c(.1,.2,.1,.2,.1)
+m2 <- vec1 %*% t(vec1)
+m2
+eigen(m2)
+120*265
+120*365
+1000000/120*365
+1000000/(120*365)
+372-227
+vec <- c()
+index <- 1
+for( i in 1:10 ) {
+for( j in i:10 ) {
+vec[index] <- i*j
+index <- index + 1
+}
+vec
+length(vec)
+mat <- matrix(rep(0,100),ncol=10)
+mat
+mat <- matrix(rep(0,550),ncol=10)
+mat
+help(ginv)
+??ginv
+matrix(rep(0,(12*13)/2),ncol=13)
+matrix(rep(0,(12*13/2)),ncol=13)
+rep(0,(12*13/2))
+length(rep(0,(12*13/2)))
+matrix(rep(0,(12*13/2)*13),ncol=13)
+diag(c(1,1,1,1))
+library(MASS)
+mvrnorm(10,c(1,2),matrix(c(1,0,0,1),ncol=2))
+data1 <- read.table("~/Documents/RankAndCombine/AnnoAveNoImp/chr17_wMethyl.txt",header=TRUE)
+benign <- read.table("~/Desktop/DataSources/ClinVar/clinvar_chr17_benign.txt")#
+pathogenic <- read.table("~/Desktop/DataSources/ClinVar/clinvar_chr17_pathogenic.txt")
+data1[1,]
+names <- rep("",dim(data1)[1])#
+for ( i in 1:(dim(data1)[1]) ) {#
+	names[i] <- paste(as.character(data1$Chr[i]),as.character(data1$Position[i]),as.character(data1$Ref[i]),as.character(data1$Alt[i]),sep="_")#
+}
+length(names)
+sel.benign <- which( names %in% as.character(benign[,1]))#
+sel.patho <- which( names %in% as.character(pathogenic[,1]))
+length(sel.benign)
+length(sel.patho)
+clin_val <- rep(0,3180642)
+clin_val[sel.benign] <- 1
+clin_val[sel.patho] <- -1
+clin_val <- rep("Not_Specified",3180642)
+clin_val[sel.patho] <- "Pathogenic"
+clin_val[sel.benign] <- "Benign"
+data2 <- cbind(data1,clin_val)
+data2[1,]
+write.table(data2,file="~/Desktop/chr17_wClinVar.txt",sep="\t",row.names=FALSE,quote=FALSE)
+library("clusterGeneration")
+rcorrmatrix(4)
+rcorrmatrix(4,2)
+rcorrmatrix(4,3)
+rcorrmatrix(4,10)
+rcorrmatrix(4,20)
+rcorrmatrix(4,.5)
+rcorrmatrix(4,.1)
+rcorrmatrix(4,1)
+abs(rcorrmatrix(4,1))
+abs(rcorrmatrix(4,20))
+abs(rcorrmatrix(4,100))
+foo <- diag(x=rep(1,12))
+foo
+foo[1:4,1:4] <- abs(rcorrmatrix(4,100))
+foo
+foo[5:8,5:8] <- abs(rcorrmatrix(4,10))
+foo
+foo[9:12,9:12] <- abs(rcorrmatrix(4,1))
+foo
+abs(rcorrmatrix(4,1))
+abs(rcorrmatrix(4,100))
+foo <- rnorm(5)
+foo
+fooq <- qnorm(foo)
+help(qnorm)
+food <- dnorm(foo)
+food
+qbeta(food,.1,.1)
+plot(qbeta(food,.1,.1))
+plot(qbeta(food,1,1))
+foo <- rnorm(500)
+food <- dnorm(foo)
+plot(qbeta(food,.1,.1))
+plot(qbeta(food,1,1))
+plot(food)
+plot(foo)
+foop <- pnorm(foo)
+plot(qbeta(foop,.1,.1))
+foom <- matrix(foo,ncol=5)
+foom
+foomp <- pnorm(foomp)
+foomp <- pnorm(foom)
+foomp
+plot(qbeta(foop,.5,.5))
+plot(qbeta(foop,.2,.2))
+rcorrmatrix(4,3)
+rcorrmatrix(4,.1)
+rcorrmatrix(4,.01)
+rcorrmatrix(4,.001)
+rcorrmatrix(4,.0000001)
+4/(15+12)
+2(15+6)
+4/(15+12)
+2/(15+6)
+4/(2*15+8)
+2/(15+4)
+250000^(-4/(2*15+8))
+250000^(-4/(15+12))
+250000^(4/(2*15+8))
+250000^(4/(15+12))
+2500000^(4/(15+12))
+25000000^(4/(15+12))
+foo <- matrix(c(.6,.6,.6,.6),ncol=2)
+bar <- matrix(c(.5,.5,.5,.5),ncol=2)
+z <- (1/2) * log( (1+foo)/(1-bar) )
+z
+z <- (1/2) * log( (1+foo)/(1-foo) )
+z
+sum(z)
+baz <- c(1,1,1)
+baz %*% baz
+baz %*% t(baz)
+t(baz) %*% baz
+inf
+Inf
+1 < Inf
+1> Inf
+NULL
+is.null(NULL)
+l1 <- list()
+l1[[1]] <- c(1,2,3)
+l1[[2]] <- c(3,4,5)
+l2 <- l1
+l1==l2
+l1[[1]]==l2[[1]]
+length(l1)==length(l2)
+2^16
+2/64
+2^64
+2^64 * .028
+2^64 * .028 /1000
+length(c())
+intToBits(5)
+intToBits(7)
+intToBits(15)
+intToBits(511)
+intToBits(2047)
+intToBits(2^16-1)
+setwd("~/Documents/data_BROAD")
+angptl3 <- read.table("ANGPTL3.txt",sep="\t")
+dim(angptl3)
+angptl3[1,]
+non_syn_3 <- as.character(angptl3[,12]) == "NON_SYNONYMOUS_CODING"
+non_syn_3
+non_syn_3 <- as.numeric(as.character(angptl3[,12]) == "NON_SYNONYMOUS_CODING")
+non_syn_3
+length(non_syn_3)
+angptl4 <- read.table("ANGPTL4.txt",sep="\t")
+non_syn_4 <- as.numeric(as.character(angptl4[,12]) == "NON_SYNONYMOUS_CODING")
+angptl5 <- read.table("ANGPTL5.txt",sep="\t")
+non_syn_5 <- as.numeric(as.character(angptl5[,12]) == "NON_SYNONYMOUS_CODING")
+non_syn_4
+non_syn_5
+write.table(non_syn_3,file="ANGPTL3_non_syn.txt",quote=FALSE,row.names=FALSE,col.names=FALSE)
+write.table(non_syn_4,file="ANGPTL4_non_syn.txt",quote=FALSE,row.names=FALSE,col.names=FALSE)
+write.table(non_syn_5,file="ANGPTL5_non_syn.txt",quote=FALSE,row.names=FALSE,col.names=FALSE)
+levels(angptl3[,12])
+levels(angptl4[,12])
+levels(angptl5[,12])
+rm(list=ls())
+ls()
+getwd()
+setwd("/Users/km2971/Desktop/Archive/CUMC/DallasResults")
+load("DallasResults.RData")
+ls()
+ANGPTL3.nonsyn
+ANGPTL3.syn
+rm(list=ls())
+ls()
+setwd("~/Downloads")
+load("DATA.RData")
+ls()
+ANGPTL3
+ls()
+dim(ANGPTL3)
+dim(ANGPTL4)
+dim(ANGPTL5)
+dim(X)
+X[1:10,]
+dim(y)
+length(y)
+ls()
+setwd("~/Desktop/SKATbe")
+ls
+ls()
+setwd("~/Desktop/SKATbe")
+install.packages("SKATbe_1.0.tar.gz",type="source")
+library(SKATbe)
+help(skat.be)

@@ -1,0 +1,2 @@
+
+vps13b_analysis.sas performs the analysis for the VPS13B gene as it appears in the manuscript. The %HM_approach macro in this folder is modified to include only non-synonymous variants with MAF below 0.05. The higher level covariate dataset (Zdata) used for this analysis is vps13b_Poly_Gerp.txt.

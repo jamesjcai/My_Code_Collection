@@ -1,0 +1,12 @@
+Package: SKATbe
+Type: Package
+Title: SKAT backward elimination
+Version: 1.0
+Date: 2014-07-31
+Author: Iuliana Ionita-Laza
+Maintainer: Iuliana Ionita-Laza <ii2135@columbia.edu>
+Depends: SKAT
+Index:
+Description: The package implements a method using SKAT and backwards elimination to select a set of variants that are most likely to be disease related.
+License: GPL-3
+Packaged: 2014-08-08 14:42:46 UTC; km2971
