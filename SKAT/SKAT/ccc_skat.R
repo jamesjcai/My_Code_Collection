@@ -3,8 +3,13 @@ library(SKAT)
 data(SKAT.example)
 #names(SKAT.example)
 attach(SKAT.example)
+
 obj<-SKAT_Null_Model(y.b ~ 1, out_type="D")
 #SKAT(Z, obj)$p.value
+
+obj<-SKAT_Null_Model(y.c ~ X, out_type="C")
+SKAT(Z, obj)$p.value
+
 
 library(AssotesteR)
 

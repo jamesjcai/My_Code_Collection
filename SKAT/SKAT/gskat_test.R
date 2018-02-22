@@ -18,6 +18,6 @@ structure(c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 gxdata=list(ID=ID,y=y,X=X,Z=G)
 
 
-library(gskat)
-gskat_score(gxdata)
+#library(gskat)
+#gskat_score(gxdata)
 
