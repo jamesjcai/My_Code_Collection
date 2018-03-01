@@ -1,3 +1,9 @@
 # MLMA analysis - If you have already computed the GRM
 gcta64 --mlma --bfile test --grm test --pheno test.phen --out test --thread-num 10
 
+# http://gcta.freeforums.net/thread/173/mixed-linear-model-association-analysis
+# --mlma
+# This option will initiate an MLM based association analysis including the candidate SNP 
+# y = a + bx + g + e
+# where y is the phenotype, a is the mean term, b is the additive effect (fixed effect) of the candidate SNP to be tested for association, x is the SNP genotype indicator variable coded as 0, 1 or 2, g is the polygenic effect (random effect) i.e. the accumulated effect of all SNPs (as captured by the GRM calculated using all SNPs) and e is the residual. For the ease of computation, the genetic variance, var(g), is estimated based on the null model i.e. y = a + g + e and then fixed while testing for the association between each SNP and the trait. This analysis would be similar as that implemented in other software tools such as EMMAX, FaST-LMM and GEMMA.
+# The results will be saved in the *.mlma file.
