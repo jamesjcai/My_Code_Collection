@@ -50,6 +50,15 @@ lme2 = fitlme(tbl,'y~brand+(1|site)+(brand-1|site)');
 X=lme2.designMatrix('Fixed');
 Z1=lme.designMatrix('Random');
 Z2=lme2.designMatrix('Random');
+figure;
+subplot(1,2,1)
+spy(Z2,'.k')
+
+subplot(1,2,2)
+imagesc(Z2)
+colorbar
+colormap bone(3)
+
 
 
 %%
