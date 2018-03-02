@@ -18,6 +18,7 @@ lme = fitlmematrix(X,y,Z,[],'CovariancePattern','Isotropic');
 beta1 = fixedEffects(lme);
 toc
 
+%%
 figure; 
 hold on
 plot(beta1)
