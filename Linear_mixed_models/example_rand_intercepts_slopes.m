@@ -47,8 +47,9 @@ refline(FixedEff(2)+RndEff(10),FixedEff(1)+RndEff(9))
 z1=lme.designMatrix('Random');
 x1=lme.designMatrix('Fixed');
 res=y-x*(x\y);
-fun = @(b)parameterfun(b,res,z1);
-x0 = [0.1, 0.5, 0.5, 0.1, 0.5, 0.5, 0.1, 0.5, 0.5, 0.1];
+
+fun = @(b)parameterfun0(b,y,z1,x);
+x0 = [12, 1, 0.1, 0.5, 0.5, 0.1, 0.5, 0.5, 0.1, 0.5, 0.5, 0.1];
 [xe,fval]=fminunc(fun,x0);
 
 [lme.fixedEffects;
@@ -59,4 +60,12 @@ lme.randomEffects]'
 
 function d = parameterfun(b,res,Z)
     d=sum((res-(Z(:,[1,3,5,7,9])*b([1 3 5 7 9])'+Z(:,[2, 4, 6 8 10])*b([2 4 6 8 10])')).^2);
+end
+
+function d = parameterfun0(b0,y,Z0,X)
+    
+    Z=Z0(3:end);
+    b=b0(3:end);
+    yp=X(:,1)*b0(1)+X(:,2)*b0(2)+(Z(:,[1,3,5,7,9])*b([1 3 5 7 9])'+Z(:,[2, 4, 6 8 10])*b([2 4 6 8 10])');
+    d=sum((y-yp).^2);
 end
