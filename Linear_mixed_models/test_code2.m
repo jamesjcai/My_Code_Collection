@@ -2,7 +2,13 @@
 
 y=[21 19 20 22 14 15 13 16 14 17 15 17 12 11 12 14 16 20 18 19 14 14 14 12]';
 brand=[1 1 1 1 2 2 2 2 1 1 1 1 2 2 2 2 1 1 1 1 2 2 2 2]';
-site =[1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3]';
+site =[1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 1]';
+
+
+% y=[21 19 20 22 14 15 13 16 14 17 15 17 12 11 12 14 16 20 18 19 14 14 14 12 21 19 20 22 14 15 13 16 14 17 15 17 12 11 12 14 16 20 18 19 14 14 14 12]';
+% brand=[1 1 1 1 2 2 2 2 1 1 1 1 2 2 2 2 1 1 1 1 2 2 2 2 1 1 1 1 2 2 2 2 1 1 1 1 2 2 2 2 1 1 1 1 2 2 2 2]';
+% site =[1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 1 1]';
+
 
 % see https://www.mathworks.com/help/stats/prepare-data-for-linear-mixed-effects-models.html
 
@@ -12,7 +18,7 @@ brand=categorical(brand);
 site=categorical(site);
 
 tbl = table(brand,site,y);
-mdl = fitlm(tbl,'y~brand*site');
+% mdl = fitlm(tbl,'y~brand*site');
 
 lme = fitlme(tbl,'y~brand+(1|site)','FitMethod','ML',...
       'CovariancePattern','FullCholesky');
