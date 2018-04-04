@@ -6,7 +6,7 @@ X2=ingredients+rand(size(ingredients,1),size(ingredients,2)); %%%treat as  Snaps
 
 [coeff1,score1,latent1,tsquared1,explained1] = pca(X1);
 s=0
-for i=1:1;length(explained1)
+for i=1:1:length(explained1)
     s=s+explained1(i);
     if s>0.95
         break;
@@ -18,7 +18,7 @@ L=score1(:,1:i)
 
 [coeff2,score2,latent2,tsquared2,explained2] = pca(X2);
 s=0
-for i=1:1;length(explained2)
+for i=1:1:length(explained2)
     s=s+explained2(i);
     if s>0.95
         break;
@@ -35,6 +35,7 @@ index=i;
 %  Equation 1
 result1=trace(L'*M*M'*L)/index  
 
+%%
 ss=0
 for i=1:1:index
     for j=1:1:index
@@ -48,6 +49,7 @@ for i=1:1:index
 end
 ss=ss/index %%%result of Equation 2
 
+%%
 xh=mean(X2)
 xs=mean(X1)
 
@@ -63,6 +65,7 @@ xfc=T(1:min(size(X1)),1:min(size(X1)))
 
 % Equation 3
 fi=sqrt((xh-xs)*xfc*(xh-xs)')
+% fi=12.3894;
 
 syms x;
 e4=sqrt(2/pi)*int(exp(-x.^2/2),x,fi,inf)
