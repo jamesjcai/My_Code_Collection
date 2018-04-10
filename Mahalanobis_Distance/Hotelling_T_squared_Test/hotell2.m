@@ -67,6 +67,7 @@ case 2
     Su = ((nx-1)*Sx + (ny-1)*Sy) / (n-2);
 end
 
+
 d = mux - muy;
 D2 = d*inv(Su)*d';
 T2 = ((nx*ny)/n)*D2;

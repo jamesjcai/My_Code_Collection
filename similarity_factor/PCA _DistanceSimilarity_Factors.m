@@ -3,7 +3,7 @@ load hald
 X1=ingredients; %%treat as Historical data
 X2=ingredients+rand(size(ingredients,1),size(ingredients,2)); %%%treat as  Snapshot data
 
-
+%%
 [coeff1,score1,latent1,tsquared1,explained1] = pca(X1);
 s=0
 for i=1:1:length(explained1)
