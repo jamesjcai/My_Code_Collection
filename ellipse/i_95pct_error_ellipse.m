@@ -24,9 +24,9 @@ end
 % Get the 95% confidence interval error ellipse
 % chisquare_val = 2.4477;
 chisquare_val = sqrt(chi2inv(conf,2));
+
 a=chisquare_val*sqrt(largest_eigenval);
 b=chisquare_val*sqrt(smallest_eigenval);
 % yes=((xy(1)/a)^2 + (xy(2)/b)^2) <= 5.991;
 
-xy=xy-mean(datax);
 yes=((xy(1)/a)^2 + (xy(2)/b)^2) <= chisquare_val^2;

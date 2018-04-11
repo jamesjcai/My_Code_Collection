@@ -60,7 +60,7 @@ R = [ cos(phi) sin(phi); -sin(phi) cos(phi) ];
 r_ellipse = [ellipse_x_r;ellipse_y_r]' * R;
 
 % Draw the error ellipse
-plot(r_ellipse(:,1) + X0,r_ellipse(:,2) + Y0,'-')
+plot(r_ellipse(:,1) + X0,r_ellipse(:,2) + Y0,'.r')
 hold on;
 
 % Plot the original data
@@ -79,3 +79,15 @@ hold on;
 % Set the axis labels
 hXLabel = xlabel('x');
 hYLabel = ylabel('y');
+
+
+%%
+x=X0; y=Y0;
+((x/a)^2 + (y/b)^2) <= 5.991
+
+x=-5.579; y=-4.354;
+((x/a)^2 + (y/b)^2) <= 5.991
+
+x=-4.841; y=-7.045;
+((x/a)^2 + (y/b)^2) <= 5.991
+
