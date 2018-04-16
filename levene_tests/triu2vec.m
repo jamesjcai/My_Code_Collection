@@ -1,4 +1,4 @@
-function [x]=triu2num(X,k)
+function [x]=triu2vec(X,k)
 % V = triu(A,k) returns the elements on and above the kth diagonal of A.
 if nargin<2, k=1; end
 mask=triu(true(size(X)),k);
