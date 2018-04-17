@@ -1,4 +1,6 @@
-R=[cosd(75) -sind(75); sind(75) cosd(75)]
+dgree=25;
+
+R=[cosd(dgree) -sind(dgree); sind(dgree) cosd(dgree)];
 a=10*randn(1000,1);
 b=randn(1000,1);
 G=R*[a b]';
