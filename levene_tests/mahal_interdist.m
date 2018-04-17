@@ -1,9 +1,9 @@
-function [D]=mahal_interdist(X,Alpha)
+function [D]=mahal_interdist(X,alphav)
 %MAHAL_ROBUST Robust Mahalanobis distance squared.
 % X - Control data matrix (row: samples, column: variables)
 % Y - Case data matrix (row: samples, column: variables)
-if nargin<2, Alpha=0.75; end
-[sig] = robustcov(X,'OutlierFraction',1-Alpha);
+if nargin<2, alphav=0.75; end
+[sig] = robustcov(X,'OutlierFraction',1-alphav);
 n=size(X,1);
 D=zeros(n);
 for i=1:n-1
