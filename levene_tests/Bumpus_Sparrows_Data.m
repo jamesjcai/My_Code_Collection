@@ -75,6 +75,7 @@ Dy=interdist(dataz(~issurvived,:));
 
 [p,F,Dxv,Dyv]=Gijbels_Omelka_test(Dx,Dy);
 
+% F = 4.319
 d=[Dxv;Dyv];
 figure;
 boxplot(d,isdied)
