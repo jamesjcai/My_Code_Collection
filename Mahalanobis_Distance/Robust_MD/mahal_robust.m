@@ -21,7 +21,7 @@ end
 %      rd(i)=(Y(i,:)-mu)*(sig\(Y(i,:)-mu)');
 % end
 if ~isempty(weight)
-    S=diag(weight)/sig;    % =weight*pinv(sig);
+    S=weight.*pinv(sig);
 else
     S=pinv(sig);
 end
