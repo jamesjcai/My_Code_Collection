@@ -67,7 +67,7 @@ hold on
 plot(isdied+1.25,d,'o')
 % Figure 1 of Anderson (2006) Distance-based tests for homogeneity of
 % multivariate dispersions
-
+p=anova1(d,issurvived,'display','off')
 %%
 
 Dx=interdist(dataz(issurvived,:));

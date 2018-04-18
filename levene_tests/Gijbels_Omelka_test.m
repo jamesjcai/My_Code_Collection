@@ -13,10 +13,10 @@ dy_bar=mean(triu2vec(Dy));            % eq (2)
 Dxv=sum(Dx,2)/(nx-1);             % eq (4)
 Dyv=sum(Dy,2)/(ny-1);             % eq (4)
 
-S2x=(4*(nx-1)/((nx-2)^2))*sum((Dxv-dx_bar).^2);     % eq (3)
-S2y=(4*(ny-1)/((ny-2)^2))*sum((Dyv-dy_bar).^2);     % eq (3)
-% sig_x=S2x/nx;  % eq (3)
-% sig_y=S2x/ny;  % eq (3)
+S2x=4*(nx-1)/(nx-2)^2*sum((Dxv-dx_bar).^2);     % eq (3)
+S2y=4*(ny-1)/(ny-2)^2*sum((Dyv-dy_bar).^2);     % eq (3)
+% sig_x=S2x/nx  % eq (3)
+% sig_y=S2x/ny  % eq (3)
 
 K=2;
 n=nx+ny;
