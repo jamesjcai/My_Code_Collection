@@ -1,4 +1,4 @@
-function [p,F,Dxv,Dyv]=Gijbels_Omelka_test(Dx,Dy)
+function [p,F]=Gijbels_Omelka_test(Dx,Dy)
 % Testing for Homogeneity of Multivariate Dispersions Using
 % Dissimilarity Measures
 nx=size(Dx,1);
@@ -20,14 +20,15 @@ S2y=4*(ny-1)/(ny-2)^2*sum((Dyv-dy_bar).^2);     % eq (3)
 
 K=2;
 n=nx+ny;
-d_bar=(1/K)*(dx_bar+dy_bar);                 % eq (5)
+d_bar=(dx_bar+dy_bar)/K;                 % eq (5) typo fixed by Guangzao Huang
 sig=((nx-1)*S2x+(ny-1)*S2y)./(n-K);                % eq (5)
 
 Fd=nx*(dx_bar-d_bar).^2+ny*(dy_bar-d_bar).^2;      % eq (5)
 F=Fd./((K-1)*sig);                                 % eq (5)
 
 df1=K-1; df2=n-K;
-p=fpval(F,df1,df2);
+% p=fpval(F,df1,df2);
+p=1-fcdf(F,df1,df2);
 
 
 

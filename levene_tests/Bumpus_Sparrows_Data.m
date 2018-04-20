@@ -67,13 +67,13 @@ hold on
 plot(isdied+1.25,d,'o')
 % Figure 1 of Anderson (2006) Distance-based tests for homogeneity of
 % multivariate dispersions
-p=anova1(d,issurvived,'display','off')
+p=anova1(d,issurvived,'display','off');
 %%
 
 Dx=interdist(dataz(issurvived,:));
 Dy=interdist(dataz(~issurvived,:));
 
-[p,F,Dxv,Dyv]=Gijbels_Omelka_test(Dx,Dy);
+[p,F]=Gijbels_Omelka_test(Dx,Dy)
 
 % F = 4.319
 d=[Dxv;Dyv];
