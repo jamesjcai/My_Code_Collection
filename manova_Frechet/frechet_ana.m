@@ -17,7 +17,7 @@ q2=sum(d2.^4)/n2-(v2).^2;
 X=[X1;X2];
 n=size(X,1);
 [~,u]=kmeans(X,1);
-v=sum(sum((X-u).^2))/n;
+v=sum(sum((X-u).^2,2))/n;
 
 %% Fn + Un
 l1=n1/n;
