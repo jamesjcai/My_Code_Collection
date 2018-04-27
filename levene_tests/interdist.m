@@ -1,5 +1,5 @@
 function D = interdist(A,methodid)
-if nargin<2, methodid=2; end
+if nargin<2, methodid=1; end
 switch methodid
     case 1
         n=size(A,2);
