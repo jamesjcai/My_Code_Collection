@@ -21,7 +21,7 @@ S2y=4*(ny-1)/(ny-2)^2*sum((Dyv-dy_bar).^2);     % eq (3)
 K=2;
 n=nx+ny;
 d_bar=(nx*dx_bar+ny*dy_bar)/n;                 % eq (5) typo fixed by Guangzao Huang
-sig=((nx-1)*S2x+(ny-1)*S2y)./(n-K);                % eq (5)
+sig=((nx-1)*S2x+(ny-1)*S2y)./(n-K);            % eq (5)
 
 Fd=nx*(dx_bar-d_bar).^2+ny*(dy_bar-d_bar).^2;      % eq (5)
 F=Fd./((K-1)*sig);                                 % eq (5)
