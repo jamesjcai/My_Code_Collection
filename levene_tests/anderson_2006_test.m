@@ -17,7 +17,9 @@ d=[mah0;mah1];
 [p,~,stats]=anova1(d,grp,'off');
 
 if strcmp(displayopt,'on')
-    boxplot(d,grp,'notch','on','color','k');
+    % h=boxplot(d,grp,'notch','on','color','k','symbol','');
+    h=boxplot(d,grp,'notch','on','color','k');
+    set(h(6,:),'color','k','linewidth',3);
     hold on
     plot(grp+1.25,d,'ok');
 end
