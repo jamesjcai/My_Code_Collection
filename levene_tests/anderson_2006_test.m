@@ -9,8 +9,10 @@ n1=size(Z1,1);
 grp=[zeros(n0,1); ones(n1,1)];
 % Z0=zscore(Z0);
 % Z1=zscore(Z1);
-[~,~,mah0] = robustcov(Z0,'OutlierFraction',1-alphav);
-[~,~,mah1] = robustcov(Z1,'OutlierFraction',1-alphav);
+%[~,~,mah0] = robustcov(Z0,'OutlierFraction',1-alphav);
+%[~,~,mah1] = robustcov(Z1,'OutlierFraction',1-alphav);
+[mah0]=sqrt(mahal_robust(Z0,Z0,alphav));
+[mah1]=sqrt(mahal_robust(Z1,Z1,alphav));
 d=[mah0;mah1];
 [p,~,stats]=anova1(d,grp,'off');
 
