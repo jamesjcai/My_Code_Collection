@@ -1,0 +1,15 @@
+w = 0;
+
+for i = 1:k
+    for j = 1:N(i)
+        x_diff = x(i,j) - mean(x(i,:));
+        w = w + (x_diff * x_diff^T);
+    end
+end
+
+b = 0;
+
+for i = 1:k
+    x_diff = mean(x(i,:)) - mean(x);
+    b = b + (N(i) * x_diff * x_diff^T);
+end
