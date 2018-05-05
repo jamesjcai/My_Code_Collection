@@ -10,7 +10,13 @@ R1=mvnrnd(mu1,sigma1,214);
 R=[R0; R1];
 grp=[zeros(212,1);ones(214,1)];
 
-[B W]=scattermat(R,grp)
+
+mu=nanmean(R);
+mui=grpstats(R,grp,'nanmean');
+
+%%
+
+[B, W]=scattermat(R,grp);
 
 %%
 N=[212 214];
