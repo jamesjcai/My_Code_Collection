@@ -32,7 +32,7 @@
 function W = LDA(Input,Target,Priors)
 
 % Determine size of input data
-[n m] = size(Input);
+[n, m] = size(Input);
 
 % Discover and count unique class labels
 ClassLabel = unique(Target);
@@ -47,7 +47,7 @@ W          = NaN(k,m+1);   % model coefficients
 if  (nargin >= 3)  PriorProb = Priors;  end
 
 % Loop over classes to perform intermediate calculations
-for i = 1:k,
+for i = 1:k
     % Establish location and size of each class
     Group      = (Target == ClassLabel(i));
     nGroup(i)  = sum(double(Group));
@@ -69,7 +69,7 @@ else
 end
 
 % Loop over classes to calculate linear discriminant coefficients
-for i = 1:k,
+for i = 1:k
     % Intermediate calculation for efficiency
     % This replaces:  GroupMean(g,:) * inv(PooledCov)
     Temp = GroupMean(i,:) / PooledCov;

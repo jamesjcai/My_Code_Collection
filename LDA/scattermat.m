@@ -4,7 +4,7 @@ function [B, W]=scattermat(data,Y)
 % W:WITHIN CLASS SCATTER MATRIX 
 %
 
-[~, l]=size(data); %CALCULATE SIZE OF DATA 
+[total_length, l]=size(data); %CALCULATE SIZE OF DATA 
 clases=unique(Y); %GET VECTOR OF CLASSES 
 tot_clases=length(clases); %HOW MANY CLASSES 
 B=zeros(l,l); %INIT B AND W 

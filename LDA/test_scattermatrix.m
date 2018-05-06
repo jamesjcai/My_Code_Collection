@@ -9,11 +9,24 @@ R1=mvnrnd(mu1,sigma1,214);
 %%
 R=[R0; R1];
 grp=[zeros(212,1);ones(214,1)];
+N=size(R,1);
 
+%mu=nanmean(R);
+%mui=grpstats(R,grp,'nanmean');
+%d0=mui-mu;
+%% S_w
+d0=R0-mean(R0);
+w0=0;
+for k=1:size(d0,1)
+w0=w0+sum(d0(k,:)*d0(k,:)');
+end
 
-mu=nanmean(R);
-mui=grpstats(R,grp,'nanmean');
-
+d1=R1-mean(R1);
+w1=0;
+for k=1:size(d1,1)
+w1=w1+sum(d1(k,:)*d1(k,:)');
+end
+Sw=(w0+w1)/N;
 %%
 
 [B, W]=scattermat(R,grp);
