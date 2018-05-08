@@ -29,4 +29,7 @@ for kx=1:21
 end
 [X,Y] = meshgrid(smpsiz,lamdav);
 save zxy Zc X Y
-
+%%
+Z=cellfun(@(X)(sum(X<0.001)),Zc);
+figure;
+mesh(X,Y,Z)
