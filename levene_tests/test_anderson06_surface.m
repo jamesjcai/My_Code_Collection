@@ -33,3 +33,46 @@ save zxy Zc X Y
 Z=cellfun(@(X)(sum(X<0.001)),Zc);
 figure;
 mesh(X,Y,Z)
+
+%%
+Sz=400;
+R0=[];
+while size(R0,1)<round(Sz/2)
+    try
+    R0=[R0; mvnrnd(mu0,sigma0*(1+0.1*randn))];
+    catch
+    end
+end
+%R0=mvnrnd(mu0,sigma0,round(Sz/2));
+R1=[];
+while size(R1,1)<round(Sz/2)
+    try
+    R1=[R1; mvnrnd(mu0,sigma0*(1+0.5*randn))];
+    catch
+    end
+end
+figure;
+p=anderson_2006_test(R0,R1,0.5,'on')
+
+
+%%
+
+Sz=400;
+R0=[];
+while size(R0,1)<round(Sz/2)
+    try
+    R0=[R0; mvnrnd(mu0,sigma0*(1+exp(randn)))];
+    catch
+    end
+end
+%R0=mvnrnd(mu0,sigma0,round(Sz/2));
+R1=[];
+while size(R1,1)<round(Sz/2)
+    try
+    R1=[R1; mvnrnd(mu0,sigma0*(1+exp(1.5*randn)))];
+    catch
+    end
+end
+figure;
+p=anderson_2006_test(R0,R1,0.5,'on')
+
