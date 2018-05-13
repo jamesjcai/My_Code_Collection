@@ -26,10 +26,12 @@ xlabel('X'), ylabel('Probability Density')
 if drawcurve
     [f,xi] = ksdensity(x);
     %hold all
-    %plot(xi,f,ksdenstyle,'linewidth',linewid,'linesmooth','on')
+    %plot(xi,f,ksdenstyle,'linewidth',linewid)
     plot(xi,f,'-','linewidth',linewid,'color',[0.50196 0.50196 0.50196])    
     %hold off
 end
+end
+
 
 %x = linspace(0,max(xout),500);
 %for k = 1:length(n)

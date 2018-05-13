@@ -1,4 +1,4 @@
-function [p] = frechet_ana(X1,X2)
+function [p,Tn] = frechet_ana(X1,X2)
 
 n1=size(X1,1);
 [~,u1]=kmeans(X1,1);
