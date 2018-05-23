@@ -1,4 +1,4 @@
-function [M,d_min]=md_forward_plot(X)
+function [M,d_min,CovMat]=md_forward_plot(X)
 %load testdata_scz_Z1_ctl_Z0.mat
 %X=Z1;
 m=size(X,1);
@@ -18,19 +18,21 @@ for k=1:m-m2
     [~,idx]=sort(mah);
     M=[M mah];
 end
-figure;
-subplot(2,2,1)
-plot(M','k')
-xlabel('Subset size m')
-ylabel('MD')
-subplot(2,2,2)
-plot(d_min,'-k');
-xlabel('Subset size m')
-ylabel('Minimum MD')
-subplot(2,2,3)
-plot(CovMat','k')
-xlabel('Subset size m')
-ylabel('Elements of Cov.')
+if nargout<1
+    figure;
+    subplot(2,2,1)
+    plot(M','k')
+    xlabel('Subset size m')
+    ylabel('MD')
+    subplot(2,2,2)
+    plot(d_min,'-k');
+    xlabel('Subset size m')
+    ylabel('Minimum MD')
+    subplot(2,2,3)
+    plot(CovMat','k')
+    xlabel('Subset size m')
+    ylabel('Elements of Cov.')
+end
 return;
 %%
 addpath('../FSDA/FSDA');
