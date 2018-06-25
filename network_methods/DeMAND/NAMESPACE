@@ -1,0 +1,4 @@
+export(runDeMAND)
+export(demandClass)
+export(printDeMAND)
+import(methods)

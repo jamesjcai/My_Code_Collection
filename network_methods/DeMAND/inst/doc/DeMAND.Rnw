@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{hyperref}
+\usepackage{fixltx2e}
+%\VignetteIndexEntry{Using DeMAND}
+\title{Using DeMAND, a package for Interrogating Drug Mechanism of Action using Network Dysregulation analysis}
+\author{Jung Hoon Woo, Yishai Shimoni, Mukesh Bansal, and  Andrea Califano\\Columbia University, New York, USA}
+\date{\today}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\maketitle
+%-----------
+\section{Overview of DeMAND}\label{sec:overview}
+Characterization of compound Mechanism of Action (MoA) is a critical, albeit complex and lengthy component of the drug development pipeline \cite{Scannell2012}. It is relevant both to determine the specificity of on-target activity as well as to identify off-target effects associated with potential toxicity, thus providing critical insight into the two major challenges of drug development. The MoA of a compound is defined as the set of potentially cell-context-specific biochemical interactors and effector through which a compound produces its pharmacological effects. Most of the experimental approaches relying on direct binding assays such as affinity purification \cite{Ito2010,Hirota2012} or affinity chromatography assays \cite{Aebersol2003}. These methods are limited to the identification of drug substrates with strong binding affinity to their ligand, rather than the full repertoire of proteins that effect compound activity in a specific tissue.
+Recently, systematic profiling of gene expression profiles (GEP) following compound perturbation in cell lines \cite{Lamb2006} has spurred development of novel computational methods for MoA analysis. The most advanced genomics based MoA studies have been conducted by network-based methods which have been recently proposed \cite{Gardner2003,Bernardo2005}.  However, these methods either rely on prior knowledge of the specific sub-networks that most likely mediate compound activity (i.e., not suitable for genome-wide analyses) or require a large number of samples (N > 100) to assess compound-specific rewiring of network topology thus limiting their practical utility. 
+To address these challenges, we introduce a novel algorithm for Detecting Mechanism of Action based Network Dysregulation (DeMAND). The algorithm interrogates a pre-defined tissue-specific regulatory network, using a relatively small number of GEPs (N > 6) representing in vitro or in vivo compound-specific perturbations, to identify compound targets and effectors. The method is based on the realization that drugs affect the protein activity of their targets, but not necessarily their mRNA expression levels. In contrast, the change in protein activity directly affects the mRNA expression levels of downstream genes. Based on this hypothesis, DeMAND identifies drug MoA by comparing gene expression profiles following drug perturbation with control samples, and computing the change in the individual interactions within a pre-determined integrated transcriptional and post-translational regulatory model (interactome). For each edge in the interactome we determine the two-dimensional probability distribution of the gene expression levels both in the control state, and following drug treatment. Any changes in the probability distribution are estimated using the Kullback-Leibler (KL) divergence, from which we determine the statistical significance of the dysregulation of each edge. In the second step of DeMAND, we interrogate each gene independently to determine whether its interactions are enriched in dysregulated ones, suggesting that it is a candidate mechanism of action\cite{Woo2015}.
+%--------
+\section{Citation}
+Woo JH, Shimoni Y, Yang WS, Subramaniam P, Iyer A, Nicoletti P, Martinez MR, Lopez G, Mattioli M, Realubit R, Karan C, Stockwell BR, Bansal M, Califano A (2015) Elucidating Compound Mechanism of Action by Network Dysregulation Analysis in Perturbed Cells (under review)
+%--------
+\section{Installation of \emph{DeMAND} package}
+In order to install the \emph{DeMAND} package, the user needs to first install R (\url{http://www.r-project.org}). After that \emph{DeMAND} and the required packages can be installed with:
+
+<<echo=TRUE, eval=FALSE, results=hide>>=
+source("http://bioconductor.org/biocLite.R")
+biocLite("DeMAND")
+@
+%-------------
+\section{To run DeMAND using the data provided the \emph{DeMAND} package}
+\subsection{Getting Started}
+After installing the \emph{DeMAND} package, DeMAND can be loaded by
+
+<<echo=TRUE, results=hide>>=
+library(DeMAND)
+@
+
+\subsection{Loading the data and generating a demand object}
+The data distributed in the \emph{DeMAND} package is required to execute the code provided in this vignette. The data contains a gene expression dataset, annotation of the expression data, sample indices, and regulatory network:
+\begin{description}
+\item[bcellExp] A subest of a gene expression profiles from DLBCL cells treated by Geldanamycin and by DMSO as control.
+\item[bcellAnno] Annotation information for the probes of the gene expression matrix
+\item[bcellNetwork] A subset of a molecular interaction network of Bcell assembled by the ARACNe\cite{Margolin2006} algorithm for protein-DN interactions and Bayesian method\cite{Lefebvre2010} for protein-protein interactions.
+\item[caseIndex] Column indices of the gene expression matrix for the samples treated by Geldanamycin.
+\item[controlIndex] Column indices of the gene expression matrix for the samples treated by DMSO.
+\end{description}
+
+The data provided in the \emph{DeMAND} package can be loaded into memory with:
+
+<<echo=TRUE, results=hide>>=
+data(inputExample)
+#ls()
+@
+
+Then, we can create an instance of class "demand" and store the required data with:
+
+<<echo=TRUE, results=verbatim>>=
+dobj <- demandClass(exp=bcellExp, anno=bcellAnno, network=bcellNetwork)
+printDeMAND(dobj)
+@
+
+\subsection{Drug MoA prediction using the \emph{runDeMAND} function}
+We consider a gene as a part of Drug MoA if the interactions surrounding the gene are significanly dysregulated.
+The \texttt{runDeMAND()} function performs the prediction and store the results in the \emph{demand} object.
+
+<<echo=TRUE, results=verbatim>>=
+dobj <- runDeMAND(dobj, fgIndex=caseIndex, bgIndex=controlIndex)
+printDeMAND(dobj)
+@
+
+Here are some information and the requirements for you to generate a \emph{demand} object and to run the \texttt{runDeMAND()} function.
+\begin{description}
+\item[exp]{A N-by-M numeric matrix where the rows represent N probes (or genes) and the columns represent M samples.}
+\item[anno]{A N-by-2 character matrix where the rows represent probes or genes in the same order as the \emph{exp} matrix. The first column must hold the probe id or gene name as appears in the \emph{exp} matrix, and the second column should hold their corresponding names (e.g gene symbol) as appears in the \emph{network} matrix.}
+\item[network]{A K-by-L (L>1) character matrix containing K interactions. The 1st column and the 2nd column contain the names of the interacting genes. The following columns may include additional data about the interaction, but are currently ignored.}
+\item[fgIndex]{A numeric vector contains indices of columns which represent case samples (e.g. drug treated). The sample size should be greater than 3.}
+\item[bgIndex]{A numeric vector contains indices of columns which represent control samples (e.g. drug treated). The sample size should be greater than 3.}
+\end{description}
+
+%--------
+\clearpage
+\section{References}
+\begin{thebibliography}{00}
+\bibitem{Scannell2012} Scannell, J.W., et al., Diagnosing the decline in pharmaceutical R\&D efficiency. Nat Rev Drug Discov, 2012. 11(3): p. 191-200.
+\bibitem{Ito2010} Ito, T., et al., Identification of a Primary Target of Thalidomide Teratogenicity. Science, 2010. 327(5971): p. 1345-1350
+\bibitem{Hirota2012} Hirota, T., et al., Identification of Small Molecule Activators of Cryptochrome. Science, 2012. 337(6098): p. 1094-1097.
+\bibitem{Aebersol2003} Aebersold, R. and M. Mann, Mass spectrometry-based proteomics. Nature, 2003. 422(6928): p. 198-207.
+\bibitem{Lamb2006} Lamb, J., et al., The Connectivity Map: using gene-expression signatures to connect small molecules, genes, and disease. Science, 2006. 313(5795): p. 1929-35.
+\bibitem{Gardner2003} Gardner, T.S., et al., Inferring genetic networks and identifying compound mode of action via expression profiling. Science, 2003. 301(5629): p. 102-5.
+\bibitem{Bernardo2005} di Bernardo, D., et al., Chemogenomic profiling on a genome-wide scale using reverse-engineered gene networks. Nat Biotechnol, 2005. 23(3): p. 377-83.
+\bibitem{Woo2015} Woo, J.H., et al.,  Elucidating Compound Mechanism of Action
+by Network Perturbation Analysis. Cell 2015. 162(2): p. 1-11.
+\bibitem{Margolin2006} Margolin, A. A. et al. ARACNE: an algorithm for the reconstruction of gene regulatory networks in a mammalian cellular context. 2006. BMC Bioinformatics 7 Suppl 1, S7.
+\bibitem{Lefebvre2010} Lefebvre, C. et al. A human B-cell interactome identifies MYB and FOXM1 as master regulators of proliferation in germinal centers. Mol. Syst. Biol. 2010. 6, 377.
+
+\end{thebibliography}
+%--------
+\section{Session information}
+The output in this vignette was produced under the following conditions:
+<<echo=TRUE, results=verbatim>>=
+sessionInfo()
+@
+%--------
+\end{document}
+
+
