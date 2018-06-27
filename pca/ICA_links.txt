@@ -8,6 +8,7 @@ https://www.youtube.com/channel/UCEirPnFv_2QbvzrM67SnKPA/feed
 
 https://arxiv.org/abs/1404.2986
 
+https://www.khanacademy.org/math/linear-algebra/alternate-bases/orthonormal-basis/v/linear-algebra-introduction-to-orthonormal-bases
 
 
 https://books.google.co.jp/books?id=yaBiwMMLpE8C&pg=PA572&lpg=PA572&dq=svd+vs+independent+ICA&source=bl&ots=QlMkVpRRuz&sig=cyescDpd5ghHyBgWgDUHLxhOepA&hl=en&sa=X&ved=0ahUKEwj4q7-oq_DbAhUGA4gKHcCgDdU4FBDoAQhCMAU#v=onepage&q=svd%20vs%20independent%20ICA&f=false
