@@ -6,6 +6,10 @@ https://people.cs.pitt.edu/~milos/courses/cs3750-Fall2007/lectures/PCA.pdf
 
 https://www.youtube.com/channel/UCEirPnFv_2QbvzrM67SnKPA/feed
 
+https://arxiv.org/abs/1404.2986
+
+
+
 https://books.google.co.jp/books?id=yaBiwMMLpE8C&pg=PA572&lpg=PA572&dq=svd+vs+independent+ICA&source=bl&ots=QlMkVpRRuz&sig=cyescDpd5ghHyBgWgDUHLxhOepA&hl=en&sa=X&ved=0ahUKEwj4q7-oq_DbAhUGA4gKHcCgDdU4FBDoAQhCMAU#v=onepage&q=svd%20vs%20independent%20ICA&f=false
 
 https://books.google.co.jp/books?id=QRsHZbbfQtIC&pg=PA245&lpg=PA245&dq=svd+vs+independent+ICA&source=bl&ots=gSPgeMJ36q&sig=8l7YiU_F2DWPRHH_272vZhPzoxc&hl=en&sa=X&ved=0ahUKEwj4q7-oq_DbAhUGA4gKHcCgDdU4FBDoAQhRMAg#v=onepage&q=svd%20vs%20independent%20ICA&f=false
