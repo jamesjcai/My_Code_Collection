@@ -4,6 +4,8 @@ https://blog.paperspace.com/dimension-reduction-with-independent-components-anal
 http://sites.psu.edu/mcnl/files/2017/03/BIOE597_SP17_Lecture12-2cwdgvp.pdf
 https://people.cs.pitt.edu/~milos/courses/cs3750-Fall2007/lectures/PCA.pdf
 
+https://www.youtube.com/watch?v=e4woe8GRjEI
+
 https://www.youtube.com/channel/UCEirPnFv_2QbvzrM67SnKPA/feed
 
 https://arxiv.org/abs/1404.2986
