@@ -18,3 +18,4 @@ https://books.google.co.jp/books?id=yaBiwMMLpE8C&pg=PA572&lpg=PA572&dq=svd+vs+in
 https://books.google.co.jp/books?id=QRsHZbbfQtIC&pg=PA245&lpg=PA245&dq=svd+vs+independent+ICA&source=bl&ots=gSPgeMJ36q&sig=8l7YiU_F2DWPRHH_272vZhPzoxc&hl=en&sa=X&ved=0ahUKEwj4q7-oq_DbAhUGA4gKHcCgDdU4FBDoAQhRMAg#v=onepage&q=svd%20vs%20independent%20ICA&f=false
 
 
+http://www.nlpca.org/ica_independent_component_analysis.html
