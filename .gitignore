@@ -73,3 +73,6 @@ octave-workspace
 
 # End of https://www.gitignore.io/api/matlab
 
+Others/quickhash/input1.txt
+Others/quickhash/input2.txt
+Others/quickhash/output.txt
