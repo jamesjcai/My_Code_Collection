@@ -18,5 +18,8 @@ else
     a5=length(k3)-a4-a6-a7;
 end
 %figure;
-vennX( [ a1 a2 a3 a4 a5 a6 a7 ], .1);
+[ a1 a2 a3 a4 a5 a6 a7 ]
+
+venn([ a1 a2 a3 a4 a5 a6 a7 ])
+%vennX( [ a1 a2 a3 a4 a5 a6 a7 ], .1);
 axis equal
