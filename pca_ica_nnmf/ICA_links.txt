@@ -22,3 +22,10 @@ https://books.google.co.jp/books?id=QRsHZbbfQtIC&pg=PA245&lpg=PA245&dq=svd+vs+in
 
 
 http://www.nlpca.org/ica_independent_component_analysis.html
+
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4881387/
+"While simple and widely used in practice, ICA is an inherently linear demixing method and can fail in practice when no linear demixing matrix is available to produce independent outputs, as is often the case when the neural components exhibit significant spatial overlap. ... To overcome this problem, two nonlinear matrix factorization methods have been proposed: multilevel sparse matrix factorization (Diego-Andilla and Hamprecht, 2013) and nonnegative matrix factorization (NMF) (Maruyama et al., 2014)."
+
+
+https://www.slideshare.net/DaichiKitamura/efficient-initialization-for-nonnegative-matrix-factorization-based-on-nonnegative-independent-component-analysis
