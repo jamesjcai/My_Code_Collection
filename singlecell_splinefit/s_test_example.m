@@ -1,9 +1,11 @@
 load DermalFibroblasts_data.mat
 
 [lgu0,dropr0,lgcv0,glist0]=i_scmatrix_stat(data0,glist);
+figure;
 d0=i_3dspline(lgu0,dropr0,lgcv0);
 
 [lgu1,dropr1,lgcv1,glist1]=i_scmatrix_stat(data1,glist);
+figure;
 d1=i_3dspline(lgu1,dropr1,lgcv1);
 
 [glist01,i,j]=intersect(glist0,glist1,'stable');
