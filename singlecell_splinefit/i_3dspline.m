@@ -12,8 +12,8 @@ s = cumsum([0;sqrt(diff(x(:)).^2 + diff(y(:)).^2 + diff(z(:)).^2)]);
 pp1 = splinefit(s,xyz,pieces,0.75);
 xyz1 = ppval(pp1,s);
 hold on
-% plot3(xyz1(1,:),xyz1(2,:),xyz1(3,:),'-','linewidth',7);
-scatter3(xyz1(1,:),xyz1(2,:),xyz1(3,:));
+plot3(xyz1(1,:),xyz1(2,:),xyz1(3,:),'-','linewidth',7);
+% scatter3(xyz1(1,:),xyz1(2,:),xyz1(3,:));
 grid on
 % hold off
 if nargout>0
