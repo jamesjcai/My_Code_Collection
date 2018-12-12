@@ -57,7 +57,7 @@ GS.entrez_nb=length(GeneSetName);
 ind_d = cell(1,length(GeneSetName));  %indices of all GS genes in dataset
 RI = ind_d;
 for a=1:length(GeneSetName)
-    [common,ind_d{a}] = intersect_fast(genelist,GeneSet{a});  %find genes that are in given GS
+    [common,ind_d{a}] = intersect_fast(genelist,string(GeneSet{a}));  %find genes that are in given GS
     %if length(common) ~= GS.entrez_nb(a)
         GS.entrez{a} = common;
         GS.entrez_nb(a) = length(common);    %find genes with ranks within GS
@@ -150,7 +150,17 @@ parfor a=1:GS.nb
     out_tmp(3) = ESmax;           % Enrichment Score 
     
     if ESmax>0    %positive ES
+        %clc;
+        %GS_tmp.entrez{a}
+        %genelist(1:ind)
+        
         [LEF_tmp,ind_LEF] = intersect_fast(GS_tmp.entrez{a},genelist(1:ind));   % genes from LEF 
+        
+        %LEF_tmp
+        %ind_LEF
+        
+        
+        
         LEF_tmp(:,2) = RI_tmp(ind_LEF);      % ES from genes of LEF   
         ind = ES_perm > 0;
         tmp_NES = zeros(1,opts.perm_nb);

@@ -9,11 +9,11 @@ opts.perm_nb = 1000;    %number of permutations
 
 % load('data_GSE6344.mat')
 T=readtable('input.txt');
-genelist=string(T.Gene);
-generank=T.Residual_CV;
+genelist=string(T.glist01);
+generank=T.dd;
 
-% load \\cvm-research-dr.cvm.tamu.edu\CaiLab\Cai-Terra3\DATA\DISK4T\ref_gene_sets\msigdb_v62\msigdb_v62_c5.mat
-load msigdb_v62_c5.mat GeneSet GeneSetName
+load \\cvm-research-dr.cvm.tamu.edu\CaiLab\Cai-Terra3\DATA\DISK4T\ref_gene_sets\msigdb_v62\msigdb_v62_c5.mat
+% load msigdb_v62_c5.mat GeneSet GeneSetName
 
 [res_pos,res_neg,res_descr,p_gene] = MrGSEA_rank(generank,genelist,...
                                      GeneSet,GeneSetName,'test_rank',opts);
