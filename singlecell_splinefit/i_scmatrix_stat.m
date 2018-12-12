@@ -1,8 +1,9 @@
 function [lgu,dropr,lgcv,glist]=i_scmatrix_stat(X,glist)
 
+% see usage: s_test_example.m
 dropr=1-sum(X>0,2)./size(X,2);
-u=mean(X,2);
-cv=std(X,0,2)./u;
+u=nanmean(X,2);
+cv=nanstd(X,[],2)./u;
 lgu=log10(u);
 lgcv=log10(cv);
 

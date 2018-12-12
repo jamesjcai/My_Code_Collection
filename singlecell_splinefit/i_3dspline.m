@@ -1,5 +1,6 @@
 function [d,xyz1]=i_3dspline(x,y,z)
 
+% see usage: s_test_example.m
 % scatter3(x,y,z,'o','MarkerFaceColor',[0 .75 .75]);
 scatter3(x,y,z,'MarkerEdgeAlpha',.8);
 % [xData, yData, zData] = prepareSurfaceData(x,y,z);
