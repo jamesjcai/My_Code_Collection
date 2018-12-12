@@ -12,7 +12,7 @@ lgcv(i)=[];
 dropr(i)=[];
 glist(i)=[];
 
-[xyz,i]=sortrows([lgu dropr lgcv],[1 2 3],'descend');
+[xyz,i]=sortrows([lgu dropr lgcv],[1 2 3]);
 lgu=xyz(:,1);
 dropr=xyz(:,2);
 lgcv=xyz(:,3);
