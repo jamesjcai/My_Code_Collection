@@ -19,15 +19,3 @@ lgu=xyz(:,1);
 dropr=xyz(:,2);
 lgcv=xyz(:,3);
 if ~isempty(glist), glist=glist(i); end
-
-
-
-
-
-
-    
-    
-    
-    
-    
-    
