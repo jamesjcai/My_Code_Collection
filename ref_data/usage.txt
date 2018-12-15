@@ -1,0 +1,1 @@
+T=table(string(split(webread('https://raw.githubusercontent.com/jamesjcai/My_Code_Collection/master/ref_data/autosomal_protein_coding_genes.txt'))))
