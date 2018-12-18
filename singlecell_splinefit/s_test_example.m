@@ -1,10 +1,11 @@
-load DermalFibroblasts_data.mat
+load E-MTAB-5989_dermal_fibroblasts.mat
+%load GSM3204304_lung_airway_epithelial_cells.mat
 
-[lgu0,dropr0,lgcv0,glist0]=i_scmatrix_stat(data0,glist);
+[lgu0,dropr0,lgcv0,glist0]=i_scmatrix_stat(X0,genelist);
 figure;
 [d0,xyz0]=i_3dspline(lgu0,dropr0,lgcv0);
 
-[lgu1,dropr1,lgcv1,glist1]=i_scmatrix_stat(data1,glist);
+[lgu1,dropr1,lgcv1,glist1]=i_scmatrix_stat(X1,genelist);
 [d1,xyz1]=i_3dspline(lgu1,dropr1,lgcv1);
 
 %{
@@ -34,8 +35,14 @@ dd=d1-d0;
 Tres2=table(glist01,d1,d0,dd);
 Tres2=sortrows(Tres2,4,'descend');
 
+
+[glistfinal,idx1,idx2]=intersect(glist01,genelist,'stable');
+X0=X0(idx2,:);
+X1=X1(idx2,:);
+
+
 figure;
-i_scatter_withinfo(d0,d1,glist01)
+i_scatter_withinfo(d0,d1,glist01,X0,X1)
 hline = refline(1);
 hline.Color = 'r';
 
