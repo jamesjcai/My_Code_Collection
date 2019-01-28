@@ -1,0 +1,15 @@
+source("find_hvg.R")
+fileContent <- read.csv("data_1.txt", sep = "\t", row.names = 1)
+fileContent <- t(t(fileContent)/colSums(fileContent)) * ceiling(mean(colSums(fileContent)))
+png("data1_hvg.png", width = 1200, height = 1200, res = 300)
+out <- find_hvg(fileContent, plot = TRUE)
+dev.off()
+write.table(names(out)[out], row.names = FALSE, col.names = FALSE, quote = FALSE, file = "hvg_data1.txt")
+
+fileContent <- read.csv("data_2.txt", sep = "\t", row.names = 1)
+fileContent <- t(t(fileContent)/colSums(fileContent)) * ceiling(mean(colSums(fileContent)))
+png("data2_hvg.png", width = 1200, height = 1200, res = 300)
+out <- find_hvg(fileContent, plot = TRUE)
+dev.off()
+write.table(names(out)[out], row.names = FALSE, col.names = FALSE, quote = FALSE, file = "hvg_data2.txt")
+

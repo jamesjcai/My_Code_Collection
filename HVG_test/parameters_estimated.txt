@@ -1,0 +1,18 @@
+fr = 
+
+     General model:
+     fr(x) = b/x+a
+     Coefficients (with 95% confidence bounds):
+       a =      0.5735  (0.4214, 0.7255)
+       b =       1.464  (1.413, 1.515)
+
+       
+
+
+fr = 
+
+     General model:
+     fr(x) = b/x+a
+     Coefficients (with 95% confidence bounds):
+       a =      -3.426  (-3.798, -3.054)
+       b =       5.803  (5.607, 5.999)
