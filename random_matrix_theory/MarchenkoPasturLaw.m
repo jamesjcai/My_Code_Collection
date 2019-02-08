@@ -27,6 +27,7 @@
 % X=randn(N,T); % Normal distribution
 % %x=rand(N,T);  % Uniform distribution
 
+
 [N,T]=size(X);
 c=N/T;
 
