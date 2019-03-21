@@ -1,0 +1,18 @@
+PCA is map the data to lower dimensional. In order for PCA to do that it should calculate and rank the importance of features/dimensions. There are 2 ways to do so.
+
+using eigenvalue and eigenvector in covariance matrix to calculate and rank the importance of features
+using SVD on covariance matrix to calculate and rank the importance of the features SVD (covariance matrix) = [U S V']
+
+https://mathoverflow.net/questions/64579/difference-between-principal-component-analysispca-and-singular-value-decompos
+
+
+
+
+https://intoli.com/blog/pca-and-svd/
+
+
+
+https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues
+
+https://www.ece.rutgers.edu/~orfanidi/ece525/svd.pdf
+
