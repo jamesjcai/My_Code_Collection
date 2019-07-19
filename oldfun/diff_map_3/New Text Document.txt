@@ -1,0 +1,5 @@
+https://omictools.com/single-cell-diffusion-map-tool
+
+Analyzes single-cell differentiation data. single-cell diffusion map aims to deal with the problem of defining differentiation trajectories. Diffusion map are appropriate for the dimension-reduction of single-cell qPCR and RNA-Seq cell differentiation data as they can handle high noise levels, sampling density heterogeneities, missing and uncertain values. As a result, they can organize single cells along the non-linear and complex branches of differentiation, maintain the global structure of the differentiation dynamics and detect rare populations.
+
+https://www.ncbi.nlm.nih.gov/pubmed/26002886
