@@ -4,12 +4,16 @@ d = uigetdir(pwd, 'Select a folder');
 files=ReadFileNames(d,{'txt','csv','tsv','fa','mtx'});
 for k=1:length(files)
     f=files{k};
-    s=dir(f);    
+    s=dir(f);
     if s.bytes >= 2000000
-        fz=gzip(f);
-        s2=dir(fz{1});
-        fprintf('%s......%.2f\n',f,s2.bytes/s.bytes);
-        delete(f);
+        try
+            fz=gzip(f);
+            s2=dir(fz{1});
+            fprintf('%s......%.2f\n',f,s2.bytes/s.bytes);
+            delete(f);
+        catch
+            fprintf('%s......ERROR\n',f);
+        end
     end
 end
 
@@ -31,7 +35,7 @@ function [ FList ] = ReadFileNames(DataFolder,extList)
 if nargin<2
     extList={'txt','csv'};
 else
-    extList
+    % extList
 end
 
 DirContents=dir(DataFolder);
@@ -49,10 +53,14 @@ end
 % Here 'peg' is written for .jpeg and 'iff' is written for .tiff
 for i=1:numel(DirContents)
     if(~(strcmpi(DirContents(i).name,'.') || strcmpi(DirContents(i).name,'..')))
-        if(~DirContents(i).isdir)
-            extension=DirContents(i).name(end-2:end);
+        if(~DirContents(i).isdir)            
+            if ~isempty(strfind(DirContents(i).name,'.'))
+                idx=strfind(DirContents(i).name,'.');
+                extension=DirContents(i).name(idx(end)+1:end);
+            % extension=DirContents(i).name(end-2:end);
             if(numel(find(strcmpi(extension,extList)))~=0)
                 FList=cat(1,FList,{[DataFolder,NameSeperator,DirContents(i).name]});
+            end
             end
         else
             getlist=ReadFileNames([DataFolder,NameSeperator,DirContents(i).name],extList);
