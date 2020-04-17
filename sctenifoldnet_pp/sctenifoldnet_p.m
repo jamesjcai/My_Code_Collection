@@ -22,8 +22,13 @@ function T=sctenifoldnet_p(X0,X1,genelist,doplot)
     pValues=chi2cdf(FC,1,'upper');
     pAdjusted = mafdr(pValues,'BHFDR',true);
     if size(genelist,1)==1, genelist=genelist'; end
-    T=table(genelist,drdist,FC,pValues,pAdjusted);    
-    if doplot
+    
+   sortid=(1:length(genelist))';
+   if size(genelist,2)>1, genelist=genelist'; end
+   T=table(sortid,genelist,drdist,FC,pValues,pAdjusted);
+   T = sortrows(T,'drdist','descend');
+
+   if doplot
         pd = makedist('Gamma','a',0.5,'b',2);
         qqplot(FC,pd);
         [~,i]=sort(FC);
