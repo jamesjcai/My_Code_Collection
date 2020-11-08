@@ -1,0 +1,6 @@
+datafile cp2pirpob.dat
+outfile cp2pirpob.alpha
+PROFREQ 1
+NPARTS  4
+C_H  0.75
+C_D  0.25

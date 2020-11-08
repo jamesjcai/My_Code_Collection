@@ -1,0 +1,132 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Pedro Delicado">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Win98; U) [Netscape]">
+   <title>PCOP Application: Readme file</title>
+</head>
+<body>
+<b><font size=+1>PCOP Application. Readme
+file</font></b>
+<br>&nbsp;
+<p><b>Description of the PCOP.zip file.</b>
+<p>There are several files in <b>PCOP.zip:</b>
+<ol>
+<li>
+<b>readme.html: </b>This file.</li>
+
+<br>&nbsp;
+<li>
+<b>PCOP.exe: </b>This is the application executable file. It runs over
+Windows 98.</li>
+
+<br>&nbsp;
+<li>
+<b>setup.dat: </b>This file contains the commands required by <b>PCOP.exe.
+</b>The
+syntax of each line in the file is as follows:</li>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+c<i>ommand_name+blank_space+command_value</i>
+<br>There are six commands:
+<ul>
+<li>
+datafile <i>(character string)</i> <i>The name of the file with the original
+data.</i></li>
+
+<li>
+outfile <i>(character string) The name of the output file.</i></li>
+
+<li>
+PROFREQ <i>(integer) The required depth: the maximum order of the PCOP
+to be computed.</i></li>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Default value: 1
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Constraints: 0 &lt; PROFREQ
+&lt; p (p <i>is the data dimension</i>).
+<li>
+NPARTS <i>(integer) The search of optimum direction </i>b*(c)<i> is done
+by a grid search method. Parameter </i>NPARTS&nbsp;<i> controls the search
+precision: is the number of points in each dimension of the </i>b*(c)<i>
+candidates grid.</i></li>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Default value: 4
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Constraints: 2 &lt; NPARTS
+&lt; 7
+<li>
+C_H <i>(float) The smoothing parameter </i>h<i> is </i>C_H <i>times the
+value given by the normal reference rule.</i></li>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Default value: 0.75
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Constraints: 0.5 &lt;= C_H
+&lt;=&nbsp; 1.5
+<li>
+C_D <i>(float) The distance between two consecutive principal oriented
+points in a PCOP is about </i>C_D <i>time the value of the smoothing parameter
+</i>h.</li>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Default value: 0.3
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Constraints: 0.25 &lt;=
+C_D &lt;= .5</ul>
+
+<li>
+<b>cp2pirpob.dat, cp4pirpob.dat: </b><i>Two examples of data files. They
+contain the first 2 (resp. 4) principal component of the population pyramids
+data.</i></li>
+
+<br><i>&nbsp;&nbsp;&nbsp; The data file has <b>n </b>lines, each with <b>p</b>
+data separated by blank spaces, where <b>n </b>is the number of observed
+cases and <b>p</b> is the number of variables observed in each case.</i>
+<br>&nbsp;
+<li>
+<b>cp2pirpob.alpha, cp4pirpob.alpha: </b><i>They are the output files corresponding
+to </i><b>cp2pirpob.dat<i> </i></b><i>and </i><b>cp4pirpob.dat</b><i>,
+respectively.</i></li>
+
+<br><i>&nbsp;&nbsp; The structure of output files is as follows. There
+is a line for each identified principal oriented point. Each line contains,
+separated by blank spaces,</i>
+<ul>
+<li>
+Order of the PCOP containing the principal oriented point, minus 1</li>
+
+<li>
+Value of the parameter <i>t</i> such the the principal oriented point is
+PCOP(<i>t</i>).</li>
+
+<li>
+Density estimation for the random variable induced over the PCOP at <i>t.</i></li>
+
+<li>
+Span: proportion of original data involved in the determination of the
+principal oriented point.</li>
+
+<li>
+Variance over the hyperplane orthogonal to the PCOP at the principal oriented
+point.</li>
+
+<li>
+The <i>p</i> coordinates of the principal oriented point.</li>
+
+<li>
+The <i>p</i> coordinates of the principal direction for the principal oriented
+point.</li>
+
+<br>&nbsp;</ul>
+
+<li>
+<b>graphPCrec.m: </b>Matlab file for graphically post processing output
+files.<br>
+<BR></li>
+
+<li>
+<b>ej3Ddepth2.dat, ej3Ddepth2.alpha, setup3Ddepth2:</b> Data file, output
+file and setup file for an example of 3-dimensional data where principal
+curves of first and second order are extracted. See <a href="../my-public-files/prcv_JMVA.pdf">Delicado,
+P.(2001)</a> for a description of the data structure.</li>
+</ol>
+
+<br>&nbsp;
+</body>
+</html>

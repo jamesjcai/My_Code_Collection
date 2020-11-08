@@ -1,0 +1,6 @@
+datafile ej3Ddepth2.dat
+outfile ej3Ddepth2.alpha
+PROFREQ 2
+NPARTS  3
+C_H  1.25
+C_D  0.3
