@@ -36,7 +36,7 @@ a3=ligand_mat(:,3).*receptor_mat;
 M=[a1 a2 a3];
 M=M./sum(M,2);
 M=M.*log2(M*(n^2));
-M(isnan(M))=0
+M(isnan(M))=0;
 
 KL=sum(M,2);
 
