@@ -1,6 +1,9 @@
-% system('"d:\Miniconda3\envs\harmonypy\python.exe" script.py')
+%system('"d:\Miniconda3\envs\scgeatoolbox\python.exe" script.py')
+
+
 
 %%
+a=py.importlib.import_module('h5py');
 pd = py.importlib.import_module('pandas');
 np = py.importlib.import_module('numpy');
 counts=pd.read_csv("Xsmall.csv").values;

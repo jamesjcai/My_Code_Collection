@@ -18,7 +18,7 @@ clf = dd.BoostClassifier(n_iters=2, use_phenograph=False, standard_scaling=True)
 labels=clf.fit(counts.T).predict(p_thresh=1e-16, voter_thresh=0.5)
 clf.doublet_score()
 
-    # with phenograph
+# with phenograph
 #    clf = doubletdetection.BoostClassifier(n_iters=2, use_phenograph=True, standard_scaling=True)
 #    clf.fit(counts).predict(p_thresh=1e-16, voter_thresh=0.5)
 #    clf.doublet_score()
