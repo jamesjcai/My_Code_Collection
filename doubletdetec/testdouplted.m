@@ -1,9 +1,15 @@
 %system('"d:\Miniconda3\envs\scgeatoolbox\python.exe" script.py')
 
-
+    wrkpth='.';
+    x=pyenv;
+    pkg.i_add_conda_python_path;
+    cmdlinestr=sprintf('"%s" "%s%sscript.py"',x.Executable,wrkpth,filesep);
+    disp(cmdlinestr)
+    [status]=system(cmdlinestr);
+    
 
 %%
-a=py.importlib.import_module('h5py');
+% a=py.importlib.import_module('h5py');
 pd = py.importlib.import_module('pandas');
 np = py.importlib.import_module('numpy');
 counts=pd.read_csv("Xsmall.csv").values;
