@@ -30,10 +30,14 @@ receptor_mat=table2array(t2)+1;
 [p,n]=size(ligand_mat);
 M=zeros(p,1);
 
-a1=ligand_mat(:,1).*receptor_mat;
-a2=ligand_mat(:,2).*receptor_mat;
-a3=ligand_mat(:,3).*receptor_mat;
-M=[a1 a2 a3];
+%a1=ligand_mat(:,1).*receptor_mat;
+%a2=ligand_mat(:,2).*receptor_mat;
+%a3=ligand_mat(:,3).*receptor_mat;
+%M=[a1 a2 a3];
+M=zeros(p,n.^2);
+for k=1:n
+    M(:,(n*(k-1)+1):n*k)=ligand_mat(:,k).*receptor_mat;
+end
 M=M./sum(M,2);
 M=M.*log2(M*(n^2));
 M(isnan(M))=0;
