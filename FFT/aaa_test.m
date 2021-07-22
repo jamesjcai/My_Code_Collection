@@ -1,4 +1,5 @@
 % https://www.bogotobogo.com/Matlab/Matlab_Tutorial_DFT_Discrete_Fourier_Transform.php
+% https://www.youtube.com/watch?v=c249W6uc7ho
 
 x = [2 3 -1 4];
 N = length(x);
@@ -150,3 +151,5 @@ grid;
 end
 
 % https://github.com/Nikeshbajaj/Discrete-Fourier-Transform/blob/master/DFT_nik.m
+
+% https://www.algorithm-archive.org/contents/cooley_tukey/cooley_tukey.html
