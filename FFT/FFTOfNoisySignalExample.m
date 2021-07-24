@@ -69,19 +69,28 @@ plot(X)
 subplot(412)
 plot(abs(fft(X)));
 
-
 subplot(414)
 Y=X(randperm(length(X)));
 plot(Y);
 subplot(413)
 plot(abs(fft(Y)));
 
-
-
-
-
-
-
-
-
-
+%%
+Y2=Y;
+Z=zeros(size(Y2));
+n=length(Z);
+for k=1:10
+    i1=round(((0.1/k):0.1:1-0.1)*n);
+    [z,idx]=maxk(Y2,numel(i1));
+    Z(i1)=z;    
+    Y2(idx)=[];
+    i2=round(((0.1+(0.1/k)):0.1:1-0.1)*n);
+    [z,idx]=maxk(Y2,numel(i2));
+    Z(i2)=z;
+    Y2(idx)=[];
+end
+figure;
+subplot(411)
+plot(Z)
+subplot(412)
+plot(abs(fft(Z)));
