@@ -24,12 +24,12 @@ RINi=RIN(i);
 figure;
 subplot(2,1,1)
 scatter(TODi,data_b11i(idx,:))
-vline([0 12])
+xline([0 12])
 box on
 
 subplot(2,1,2)
 scatter(TODi,data_b47i(idx,:))
-vline([0 12])
+xline([0 12])
 box on
 
 %%
@@ -42,7 +42,8 @@ fo = fitoptions('Method','NonlinearLeastSquares',...
                'Lower',[0,0,4.0],...
                'Upper',[5,5,13],...
                'StartPoint',[0.5 0.5 6.0]);         
-ft = fittype('a*sin((pi/12)*x+b)+c','independent','x','options',fo);
+ft = fittype('a*sin((pi/12)*x+b)+c',...
+       'independent','x','options',fo);
 [f, goodness, output] = fit(x,y,ft);
 hold on
 plot(f,x,y)
