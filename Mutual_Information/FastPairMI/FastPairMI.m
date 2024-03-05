@@ -27,4 +27,4 @@ for i=1:L
 end
 MIs = MIs/L + log(L);
 
-return
+end
