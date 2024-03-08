@@ -15,7 +15,7 @@
 %
 % Please feel free to use this script to your need.
 
-figure;
+f = figure;
 axis([-10 10 -10 10])
 hold on
 grid on;
@@ -56,10 +56,10 @@ end
 disp('Finished collection blue points')
 disp('---')
 
-sigma = input('sigma = ? (default value: 1): ');
-if isempty(sigma)
+%sigma = input('sigma = ? (default value: 1): ');
+%if isempty(sigma)
     sigma = 1;
-end
+%end
 
 gamma=2;
 
@@ -73,4 +73,7 @@ hold on;
 grid on;
 scatter3(red(1,:), red(2,:), red_z, 'r');
 scatter3(blue(1,:), blue(2,:), blue_z, 'b');
- 
+
+figure(f)
+view(3)
+
