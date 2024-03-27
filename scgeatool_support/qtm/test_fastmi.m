@@ -23,7 +23,7 @@ h = 1.2;
 K = 15;
 
 data = [X; y];
-R0  = qtm.FastPairMI(data, h);
+R0  = FastPairMI(data, h);
 
 R = R0(1:end-1,1:end-1)/(K-1);
 J = R0(end,1:end-1);
