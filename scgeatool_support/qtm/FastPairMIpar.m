@@ -1,4 +1,4 @@
-function MIs  = FastPairMI(data,h)
+function MIs  = FastPairMIpar(data,h)
 % data : the input data, rows correspond to genes
 %        columns correspond to arrays (samples)  
 % h    : the std of the Gaussian kernel for density estimation 
@@ -8,7 +8,7 @@ function MIs  = FastPairMI(data,h)
 MIs = zeros(size(data,1));
 h_square = h^2;
 L = size(data,2);
-for k=1:L
+parfor k=1:L
     
     % tmp = data - repmat(data(:,k),1,L); same as the line below
     tmp = data - data(:,k);

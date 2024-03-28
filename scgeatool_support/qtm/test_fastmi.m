@@ -23,7 +23,18 @@ h = 1.2;
 K = 15;
 
 data = [X; y];
-R0  = FastPairMI(data, h);
+
+tic
+R0  = FastPairMIpar(data, h);
+disp('R0par')
+toc
+
+tic
+R0x  = FastPairMI(data, h);
+disp('R0x')
+toc
+
+
 
 R = R0(1:end-1,1:end-1)/(K-1);
 J = R0(end,1:end-1);
