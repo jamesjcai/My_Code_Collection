@@ -8,11 +8,11 @@ X = sc_transform(X,"type","PearsonResiduals");
 n = 2000;
 X = X(1:n,:);
 g = g(1:n);
-y = X(18,:);
+y = X(14,:);
 
-X(18,:)=[];
-g(18)
-g(18)=[];
+X(14,:)=[];
+g(14)
+g(14)=[];
 
 % idx=randperm(length(g));
 % g=g(idx);
@@ -24,17 +24,21 @@ K = 15;
 
 data = [X; y];
 
+% tic
+% R0  = FastPairMIpar(data, h);
+% disp('R0par')
+% toc
+% 
+% tic
+% R0x  = FastPairMI(data, h);
+% disp('R0x')
+% toc
+
+
+addpath('MI')
 tic
-R0  = FastPairMIpar(data, h);
-disp('R0par')
+R0  = pairmi(data);
 toc
-
-tic
-R0x  = FastPairMI(data, h);
-disp('R0x')
-toc
-
-
 
 R = R0(1:end-1,1:end-1)/(K-1);
 J = R0(end,1:end-1);
